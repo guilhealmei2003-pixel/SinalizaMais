@@ -1,0 +1,539 @@
+/* ===================================
+   GOOGLE FONT
+=================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ===================================
+   RESET
+=================================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+:root{
+    --azul1:#003b8f;
+    --azul2:#0066ff;
+    --azul3:#00bfff;
+    --branco:#ffffff;
+    --texto:#eaf4ff;
+
+    --glass:rgba(255,255,255,0.12);
+    --glass-border:rgba(255,255,255,0.20);
+
+    --shadow:
+    0 15px 35px rgba(0,0,0,0.20);
+}
+
+/* ===================================
+   BODY
+=================================== */
+body{
+    font-family:'Poppins',sans-serif;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    color:white;
+
+    position:relative;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--azul1),
+        var(--azul2),
+        var(--azul3)
+    );
+
+    background-size:300% 300%;
+
+    animation:
+    fundoAnimado 12s ease infinite;
+
+    padding:40px 20px;
+}
+
+/* ===================================
+   FUNDO LUZ
+=================================== */
+body::before,
+body::after{
+    content:"";
+
+    position:fixed;
+
+    border-radius:50%;
+
+    filter:blur(100px);
+
+    z-index:0;
+}
+
+body::before{
+    width:500px;
+    height:500px;
+
+    top:-180px;
+    left:-180px;
+
+    background:
+    rgba(255,255,255,0.10);
+}
+
+body::after{
+    width:400px;
+    height:400px;
+
+    bottom:-150px;
+    right:-150px;
+
+    background:
+    rgba(255,255,255,0.08);
+}
+
+/* ===================================
+   CONTAINER
+=================================== */
+.container{
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+    max-width:1280px;
+
+    margin:auto;
+
+    padding:45px;
+
+    border-radius:35px;
+
+    background:
+    rgba(255,255,255,0.10);
+
+    backdrop-filter:blur(18px);
+
+    border:
+    1px solid var(--glass-border);
+
+    box-shadow:
+    var(--shadow);
+}
+
+/* ===================================
+   TOPO
+=================================== */
+.topo{
+    text-align:center;
+
+    margin-bottom:55px;
+}
+
+.topo h1{
+    font-size:4rem;
+
+    font-weight:800;
+
+    margin-bottom:20px;
+
+    color:white;
+
+    text-shadow:
+    0 5px 20px rgba(0,0,0,0.20);
+}
+
+.subtitulo{
+    max-width:900px;
+
+    margin:auto;
+
+    font-size:1.1rem;
+
+    line-height:1.9;
+
+    color:
+    rgba(255,255,255,0.90);
+}
+
+/* ===================================
+   BANNER
+=================================== */
+.banner{
+    overflow:hidden;
+
+    border-radius:28px;
+
+    margin-bottom:45px;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.20);
+}
+
+.banner img{
+    width:100%;
+    height:450px;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:
+    transform 0.8s ease;
+}
+
+.banner:hover img{
+    transform:scale(1.05);
+}
+
+/* ===================================
+   GRID
+=================================== */
+.grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(300px,1fr));
+
+    gap:30px;
+}
+
+/* ===================================
+   CARDS
+=================================== */
+.card{
+    position:relative;
+
+    overflow:hidden;
+
+    padding:28px;
+
+    border-radius:28px;
+
+    background:
+    rgba(255,255,255,0.10);
+
+    backdrop-filter:blur(12px);
+
+    border:
+    1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.15);
+
+    transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
+}
+
+.card:hover{
+    transform:
+    translateY(-10px);
+
+    background:
+    rgba(255,255,255,0.14);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.22);
+}
+
+/* ===================================
+   IMAGEM CARD
+=================================== */
+.card img{
+    width:100%;
+    height:230px;
+
+    object-fit:cover;
+
+    border-radius:22px;
+
+    margin-bottom:20px;
+
+    transition:
+    transform 0.6s ease;
+}
+
+.card:hover img{
+    transform:scale(1.04);
+}
+
+/* ===================================
+   ÍCONE
+=================================== */
+.icone{
+    font-size:2.8rem;
+
+    margin-bottom:15px;
+
+    display:inline-block;
+}
+
+/* ===================================
+   TITULO CARD
+=================================== */
+.card h2{
+    font-size:1.6rem;
+
+    margin-bottom:15px;
+
+    font-weight:700;
+
+    color:white;
+}
+
+/* ===================================
+   TEXTO CARD
+=================================== */
+.card p{
+    line-height:1.8;
+
+    color:var(--texto);
+
+    font-size:1rem;
+}
+
+/* ===================================
+   BOTÃO VOLTAR
+=================================== */
+.voltar{
+    position:fixed;
+
+    top:20px;
+    left:20px;
+
+    z-index:999;
+
+    padding:14px 24px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:700;
+
+    background:
+    rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(12px);
+
+    border:
+    1px solid rgba(255,255,255,0.18);
+
+    transition:
+    0.4s ease;
+}
+
+.voltar:hover{
+    background:white;
+
+    color:#0066ff;
+
+    transform:
+    translateY(-3px);
+}
+
+/* ===================================
+   FOOTER
+=================================== */
+.footer{
+    margin-top:60px;
+
+    text-align:center;
+
+    padding-top:25px;
+
+    border-top:
+    1px solid rgba(255,255,255,0.12);
+
+    color:white;
+}
+
+/* ===================================
+   BOLHAS
+=================================== */
+.bolha{
+    position:fixed;
+
+    bottom:-120px;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,0.06);
+
+    animation:
+    subir linear infinite;
+
+    z-index:1;
+}
+
+.bolha:nth-child(1){
+    width:70px;
+    height:70px;
+    left:10%;
+    animation-duration:14s;
+}
+
+.bolha:nth-child(2){
+    width:90px;
+    height:90px;
+    left:35%;
+    animation-duration:18s;
+}
+
+.bolha:nth-child(3){
+    width:60px;
+    height:60px;
+    left:60%;
+    animation-duration:16s;
+}
+
+.bolha:nth-child(4){
+    width:110px;
+    height:110px;
+    left:80%;
+    animation-duration:20s;
+}
+
+/* ===================================
+   ANIMAÇÕES
+=================================== */
+@keyframes fundoAnimado{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+@keyframes subir{
+
+    0%{
+        transform:
+        translateY(0)
+        rotate(0deg);
+
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+        translateY(-1200px)
+        rotate(360deg);
+
+        opacity:0;
+    }
+
+}
+
+/* ===================================
+   RESPONSIVO
+=================================== */
+@media(max-width:992px){
+
+    .topo h1{
+        font-size:3rem;
+    }
+
+    .banner img{
+        height:320px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    body{
+        padding:20px 10px;
+    }
+
+    .container{
+        padding:25px 18px;
+    }
+
+    .topo h1{
+        font-size:2.3rem;
+    }
+
+    .subtitulo{
+        font-size:1rem;
+    }
+
+    .banner img{
+        height:220px;
+    }
+
+    .grid{
+        gap:22px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .card img{
+        height:180px;
+    }
+
+    .card h2{
+        font-size:1.4rem;
+    }
+
+    .voltar{
+        top:15px;
+        left:15px;
+
+        padding:12px 18px;
+
+        font-size:14px;
+    }
+
+}
+
+/* Sinaliza+ — tema claro, clean e acessível */
+:root{--azul1:#234b70;--azul2:#315f8b;--azul3:#9dbbd7;--branco:#fff;--texto:#536678;--glass:#fff;--glass-border:#dce6ef;--shadow:0 8px 24px rgba(31,57,81,.07)}
+body{color:#263746;background:#f4f7fb;background-size:auto;animation:none;padding:40px 20px}
+body::before,body::after{display:none}
+.container{background:#fff;backdrop-filter:none;border:1px solid #dce6ef;box-shadow:var(--shadow)}
+.topo h1{color:#234b70;text-shadow:none}
+.subtitulo{color:#536678}
+.card{background:#fff;backdrop-filter:none;border:1px solid #dce6ef;box-shadow:0 5px 18px rgba(31,57,81,.06)}
+.card:hover{background:#fbfdff;box-shadow:0 10px 24px rgba(31,57,81,.10);transform:translateY(-3px)}
+.card h2{color:#28577f}
+.card p{color:#536678}
+.voltar{color:#315f8b;background:#fff;backdrop-filter:none;border:1px solid #dce6ef}
+.voltar:hover{background:#edf4fa;color:#234b70;transform:translateY(-1px)}
+.footer{border-top:1px solid #e2eaf1;color:#536678}
+.bolha{display:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+
+
+/* Sinaliza+ — azul-claro acolhedor e cards em formato de balão */
+body{background:#eaf4ff!important;background-image:radial-gradient(ellipse at 8% 8%,rgba(173,211,246,.30),transparent 34%),radial-gradient(ellipse at 92% 88%,rgba(193,224,250,.32),transparent 32%);color:#263f55}
+.container{border:1.5px solid #b9d7f2;border-radius:24px;background:rgba(255,255,255,.92);box-shadow:0 10px 28px rgba(54,104,151,.12),inset 0 0 0 4px rgba(224,240,255,.56)}
+.card{border:1.5px solid #b9d7f2;border-radius:20px;background:linear-gradient(145deg,#fff 0%,#fafdff 100%);box-shadow:0 7px 20px rgba(54,104,151,.10),inset 0 0 0 3px rgba(224,240,255,.52);overflow:hidden}
+.card:hover{border-color:#8ebfe9;box-shadow:0 11px 26px rgba(54,104,151,.16);transform:translateY(-3px)}
+.bolha{display:block;opacity:.35;background:#c8e5ff;border:1px solid #a8d2f7}

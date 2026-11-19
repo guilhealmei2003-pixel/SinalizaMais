@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="shortcut icon" href="../html/ico/Sinaliza+.png" type="Sinaliza+">
+<link rel="stylesheet" href="../html/css/INES.css">
+
+<title>INES - Instituto Nacional de Educação de Surdos</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/Acessibilidade.css">
+    <link rel="stylesheet" href="css/MenuGlobal.css">
+</head>
+<body>
+<header class="menu-global" aria-label="Menu principal Sinaliza+">
+    <a class="menu-global-logo" href="Sinaliza.html" aria-label="Sinaliza+ — página inicial">Sinaliza+</a>
+    <nav aria-label="Navegação principal">
+        <div class="menu-global-links">
+            <a href="Sinaliza.html#inicio">Início</a>
+            <a href="Sinaliza.html#sobre">Sobre</a>
+            <a href="Sinaliza.html#recursos">Recursos</a>
+            <a href="Sinaliza.html#contato">Contato</a>
+        </div>
+        <div class="menu-global-acoes">
+            <a class="menu-global-cta" href="ConectarInterprete.html" aria-label="Intérprete 24 horas">Intérprete 24h</a>
+            <a class="menu-global-cta secundario" href="Interpretes.html" aria-label="Seja intérprete de Libras">Seja Intérprete</a>
+        </div>
+    </nav>
+</header>
+
+
+   <button class="voltar" onclick="window.location.href='Sinaliza.html'">
+    ⬅ Voltar
+</button>
+
+<header>
+    <h1>INES</h1>
+
+    <p>
+        Instituto Nacional de Educação de Surdos —
+        referência nacional na educação, inclusão,
+        acessibilidade e ensino de Libras no Brasil.
+    </p>
+</header>
+
+<section class="container">
+
+    <div class="card">
+        <h2>🏛 Sobre o INES</h2>
+
+        <p>
+            O Instituto Nacional de Educação de Surdos
+            é a principal referência do Brasil na educação
+            de pessoas surdas.
+        </p>
+
+        <p>
+            Localizado no Rio de Janeiro e ligado ao
+            Ministério da Educação, o instituto foi fundado
+            em 1857, sendo a primeira escola para surdos
+            da América Latina.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>📚 Cursos de Libras</h2>
+
+        <p>
+            O INES oferece cursos gratuitos de Libras
+            presenciais e em alguns períodos também na
+            modalidade online/EAD.
+        </p>
+
+        <ul>
+            <li>Pessoas ouvintes</li>
+            <li>Pessoas surdas</li>
+            <li>Professores</li>
+            <li>Profissionais da saúde</li>
+            <li>Familiares de surdos</li>
+            <li>Estudantes</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>🎓 Formação Profissional</h2>
+
+        <p>
+            O instituto também oferece formação acadêmica
+            e profissional voltada para inclusão e
+            acessibilidade.
+        </p>
+
+        <ul>
+            <li>Graduação</li>
+            <li>Pós-graduação</li>
+            <li>Cursos de extensão</li>
+            <li>Capacitação de professores</li>
+            <li>Formação de intérpretes de Libras</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>📺 TV INES</h2>
+
+        <p>
+            A TV INES é uma webTV acessível em Libras,
+            criada para levar conteúdos educativos,
+            culturais e informativos para a comunidade surda.
+        </p>
+
+        <p>
+            O projeto fortalece a inclusão digital
+            e o acesso à informação.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>🌎 Cursos Online</h2>
+
+        <p>
+            Quando o instituto abre cursos EAD,
+            pessoas de qualquer estado do Brasil
+            podem participar.
+        </p>
+
+        <p>
+            Basta acompanhar os editais e inscrições
+            no site oficial.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>🔗 Site Oficial</h2>
+
+        <p>
+            Acompanhe cursos, editais, inscrições,
+            notícias e informações oficiais diretamente
+            no portal do instituto.
+        </p>
+
+        <a href="https://www.ines.gov.br"
+           target="_blank"
+           class="botao">
+           Acessar Site Oficial
+        </a>
+    </div>
+
+</section>
+
+<footer>
+    <p>
+        © 2026 - Projeto Educacional sobre o INES |
+        Inclusão • Acessibilidade • Libras
+    </p>
+</footer>
+
+    <script src="js/Acessibilidade.js"></script>
+
+    <!-- VLibras global: disponível em todas as telas do Sinaliza+ -->
+    <div vw class="enabled" aria-label="VLibras - tradução para Libras">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>window.addEventListener('load', function(){ if (window.VLibras) new window.VLibras.Widget('https://vlibras.gov.br/app'); });</script>
+</body>
+</html>
+
+

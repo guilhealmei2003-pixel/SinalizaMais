@@ -1,0 +1,205 @@
+/* RESET */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body{
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0057b7, #00a8ff);
+    min-height: 100vh;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* BOTÃO VOLTAR */
+.voltar{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: white;
+    color: #0057b7;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.voltar:hover{
+    transform: scale(1.05);
+    background: #0057b7;
+    color: white;
+}
+
+/* HEADER */
+header{
+    text-align: center;
+    padding: 80px 20px 40px;
+    color: white;
+    animation: fadeDown 1s ease;
+}
+
+header h1{
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+header p{
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* CONTAINER */
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding-bottom: 40px;
+}
+
+/* CARD NOTÍCIA */
+.noticia{
+    background: rgba(255,255,255,0.95);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: 0.4s;
+    animation: fadeUp 1s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.noticia::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #0057b7, #00a8ff);
+    top: 0;
+    left: 0;
+}
+
+.noticia:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* TÍTULO */
+.noticia h2{
+    color: #0057b7;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+/* TEXTO */
+.noticia p{
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* BOTÕES */
+.btn{
+    background: linear-gradient(to right, #0057b7, #00a8ff);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.btn:hover{
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* FOOTER */
+footer{
+    background: rgba(0,0,0,0.8);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeDown{
+    from{
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVO */
+@media(max-width:768px){
+
+    header h1{
+        font-size: 2rem;
+    }
+
+    header p{
+        font-size: 1rem;
+    }
+
+    .voltar{
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+
+/* Sinaliza+ — tema claro, clean e acessível */
+body{background:#f4f7fb;color:#263746}
+header{color:#263746;animation:none}
+header h1{color:#234b70}
+header p{color:#536678;opacity:1}
+.voltar{color:#315f8b;border:1px solid #dce6ef;box-shadow:0 3px 12px rgba(28,55,80,.08)}
+.voltar:hover{background:#edf4fa;color:#234b70;transform:none}
+.noticia{background:#fff;border:1px solid #dce6ef;box-shadow:0 5px 18px rgba(31,57,81,.06);animation:none}
+.noticia::before{height:4px;background:#9dbbd7}
+.noticia:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(31,57,81,.10)}
+.noticia h2{color:#28577f}
+.btn{background:#315f8b}
+.btn:hover{background:#244b70;transform:translateY(-1px);opacity:1}
+footer{background:#eaf0f6;color:#526577}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+
+
+/* Sinaliza+ — azul-claro acolhedor e cards em formato de balão */
+body{background:#eaf4ff!important;background-image:radial-gradient(ellipse at 8% 8%,rgba(173,211,246,.30),transparent 34%),radial-gradient(ellipse at 92% 88%,rgba(193,224,250,.32),transparent 32%);color:#263f55}
+.noticia{border:1.5px solid #b9d7f2;border-radius:20px;background:linear-gradient(145deg,#fff 0%,#fafdff 100%);box-shadow:0 7px 20px rgba(54,104,151,.10),inset 0 0 0 3px rgba(224,240,255,.52);overflow:hidden}
+.noticia::before{height:5px;background:linear-gradient(90deg,#78b7eb,#b5d9f8);border-radius:20px 20px 0 0}
+.noticia:hover{border-color:#8ebfe9;box-shadow:0 11px 26px rgba(54,104,151,.16);transform:translateY(-3px)}
+
+/* Alinhar cards e botões, com o mesmo espaço para títulos e resumos. */
+.container > .noticia { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; min-height: 285px; }
+.container > .noticia h2 { width: 100%; min-height: 2.65em; margin: 0 0 14px; line-height: 1.3; overflow-wrap: anywhere; }
+.container > .noticia p { width: 100%; min-height: 4.8em; margin-bottom: 18px; line-height: 1.6; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; overflow-wrap: anywhere; }
+.container > .noticia .btn { margin-top: auto; }

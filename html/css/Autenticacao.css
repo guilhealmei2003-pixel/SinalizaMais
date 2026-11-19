@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+:root{--navy:#003b7a;--blue:#0057b7;--cyan:#00c2ff;--text:#20344a;--muted:#687d92;--line:#dce7f1}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,#0057b7,#00c2ff)}
+.auth-shell{position:relative;display:grid;min-height:100vh;place-items:center;padding:76px 18px 30px;overflow:hidden}
+.auth-shell:before,.auth-shell:after{content:"";position:absolute;width:360px;height:360px;border:1px solid #ffffff36;border-radius:50%;pointer-events:none}
+.auth-shell:before{top:-220px;left:-120px;box-shadow:0 0 0 45px #ffffff0b,0 0 0 90px #ffffff0b}
+.auth-shell:after{right:-210px;bottom:-250px;box-shadow:0 0 0 50px #ffffff0b,0 0 0 100px #ffffff0b}
+.voltar{position:absolute;z-index:2;top:20px;left:20px;padding:10px 16px;border-radius:50px;background:#fff;color:var(--blue);font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 4px 12px #0002;transition:.2s}
+.voltar:hover,.voltar:focus-visible{background:var(--navy);color:white;outline:3px solid #b6f1ff;outline-offset:2px}
+.auth-card{position:relative;z-index:1;width:min(100%,480px);padding:36px 40px 30px;border:1px solid #ffffffaa;border-radius:24px;background:rgba(255,255,255,.97);box-shadow:0 20px 55px #003b7a38;animation:appear .5s ease both}
+.auth-login{max-width:450px}
+.marca{display:inline-block;margin-bottom:24px;color:var(--blue);font-size:26px;font-weight:800;letter-spacing:-1px;text-decoration:none}
+.marca span{color:#00aeea}
+.eyebrow{display:block;color:#087dbd;font-size:11px;font-weight:700;letter-spacing:.13em}
+h1{margin:8px 0;color:var(--navy);font-size:30px;line-height:1.25}
+.intro{margin:0 0 24px;color:var(--muted);font-size:14px}
+.dica-campo{margin-top:-6px;color:var(--muted);font-size:11px;line-height:1.45}
+.dica-campo strong{color:var(--blue)}
+.nota-local{margin:2px 0 0;color:var(--muted);font-size:11px;line-height:1.5}
+.email-feedback{min-height:0;color:#a5221a;font-size:11px;line-height:1.45;white-space:pre-line}
+.email-feedback:not(:empty){display:block;margin-top:-5px;padding:7px 9px;border-radius:7px;background:#fff1f0;color:#a5221a}
+.email-feedback.sucesso:not(:empty){background:#eaf7ef;color:#176338}
+form{display:grid;gap:9px}
+label{margin-top:6px;color:var(--text);font-size:13px;font-weight:600}
+input{width:100%;min-height:48px;padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:white;color:var(--text);font:inherit;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s}
+input:focus{border-color:#138dd1;box-shadow:0 0 0 3px #00aeea20}
+input.campo-invalido,input.campo-invalido:focus{border-color:#c62828;background:#fff8f7;box-shadow:0 0 0 3px #c6282818}
+input::placeholder{color:#9aabba}
+.campo-senha{position:relative;display:flex;align-items:center}
+.campo-senha input{padding-right:78px}
+.mostrar-senha{position:absolute;right:8px;padding:7px 9px;border:0;border-radius:8px;background:transparent;color:var(--blue);font:600 12px 'Poppins',sans-serif;cursor:pointer}
+.mostrar-senha:hover,.mostrar-senha:focus-visible{background:#eaf6fd;outline:2px solid #62c8f0;outline-offset:1px}
+.esqueci-senha{justify-self:end;margin:1px 0 4px;color:var(--blue);font-size:12px;font-weight:600;text-decoration:none}
+.esqueci-senha:hover{text-decoration:underline}
+.botao-primario{min-height:50px;margin-top:13px;border:0;border-radius:12px;background:linear-gradient(100deg,#0057b7,#00aeea);color:white;font:700 15px 'Poppins',sans-serif;cursor:pointer;box-shadow:0 8px 20px #0057b72b;transition:.2s}
+.botao-primario:hover{transform:translateY(-2px);box-shadow:0 12px 24px #0057b73d}
+.botao-primario:focus-visible{outline:3px solid #008fcc;outline-offset:3px}
+.mensagem{min-height:20px;margin:0;color:#b3261e;font-size:13px;line-height:1.5;white-space:pre-line}
+.mensagem:not(:empty){display:flex;align-items:flex-start;gap:8px;margin:3px 0 4px;padding:10px 12px;border-left:4px solid #c62828;border-radius:8px;background:#fff1f0;color:#a5221a}
+.mensagem:not(:empty)::before{content:"!";display:grid;flex:0 0 19px;width:19px;height:19px;place-items:center;border-radius:50%;background:#c62828;color:white;font-size:12px;font-weight:800}
+.mensagem.sucesso{border-left-color:#21834a;background:#eaf7ef;color:#176338}
+.mensagem.sucesso::before{content:"✓";background:#21834a}
+.troca{margin:10px 0 0;text-align:center;color:var(--muted);font-size:13px}
+.troca a{color:var(--blue);font-weight:700;text-decoration:none}
+.troca a:hover{text-decoration:underline}
+.botao-link{display:flex;align-items:center;justify-content:center;text-decoration:none}
+.aviso-recuperacao .intro{margin-bottom:18px}
+.aviso-local{margin:0 0 18px;padding:14px 15px;border-left:4px solid #d18a00;border-radius:9px;background:#fff7e6;color:#69501c;font-size:13px;line-height:1.6}
+.aviso-local p{margin:7px 0 0}
+@keyframes appear{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:520px){.auth-shell{padding:76px 14px 20px}.auth-card{padding:29px 23px 24px;border-radius:20px}h1{font-size:26px}.voltar{top:14px;left:14px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}

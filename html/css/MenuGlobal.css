@@ -1,0 +1,161 @@
+/* Cabeçalho público único do Sinaliza+: identidade da página inicial em todas as telas.
+   Altere aqui para manter estilos consistentes; links em todas as páginas seguem a mesma ordem. */
+:root { --menu-altura: 84px; }
+html { scroll-padding-top: calc(var(--menu-altura) + 18px); }
+html body { padding-top: var(--menu-altura) !important; }
+body .menu-global {
+    box-sizing: border-box;
+    position: fixed !important;
+    inset: 0 0 auto 0;
+    z-index: 2500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 24px;
+    width: 100%;
+    height: var(--menu-altura);
+    min-height: var(--menu-altura);
+    margin: 0;
+    padding: 12px clamp(18px, 5vw, 64px);
+    background: rgba(255, 255, 255, .98);
+    border: 0;
+    border-bottom: 1px solid #e4edf6;
+    border-radius: 0;
+    box-shadow: 0 5px 22px rgba(0, 57, 122, .09);
+    color: #20344a;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: none !important;
+    transform: none !important;
+}
+body .menu-global .menu-global-logo {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: #0057b7;
+    font: 800 clamp(23px, 2.6vw, 31px)/1.1 'Poppins', sans-serif;
+    letter-spacing: -.9px;
+    white-space: nowrap;
+    text-decoration: none;
+}
+body .menu-global nav {
+    display: flex;
+    flex: 0 1 auto;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: clamp(3px, .55vw, 9px);
+    width: auto;
+    min-width: 0;
+    margin: 0 0 0 auto;
+    padding: 0;
+}
+body .menu-global .menu-global-links,
+body .menu-global .menu-global-acoes {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: clamp(3px, .55vw, 9px);
+}
+body .menu-global nav a {
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    margin: 0;
+    padding: 9px clamp(7px, 1.05vw, 13px);
+    border: 0;
+    border-radius: 11px;
+    color: #34476a;
+    background: transparent;
+    font: 500 13px/1.35 'Poppins', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: none;
+    transition: background .2s, color .2s, box-shadow .2s;
+}
+body .menu-global nav a::after { display: none !important; }
+body .menu-global nav a:hover { color: #0057b7; background: #edf7ff; transform: none; }
+body .menu-global nav a:focus-visible, body .menu-global .menu-global-logo:focus-visible {
+    outline: 3px solid #148de5;
+    outline-offset: 3px;
+}
+body .menu-global nav .menu-global-cta {
+    margin-left: 2px;
+    padding: 10px 17px;
+    border: 0;
+    border-radius: 11px;
+    background: linear-gradient(115deg, #0057b7, #008bdb);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0, 87, 183, .16);
+}
+body .menu-global nav .menu-global-cta.secundario {
+    margin-left: 0;
+    background: linear-gradient(115deg, #0072c9, #00a3ea);
+    color: #fff;
+}
+body .menu-global nav .menu-global-cta:hover,
+body .menu-global nav .menu-global-cta.secundario:hover {
+    background: linear-gradient(115deg, #003b7a, #0076be);
+    color: #fff;
+    box-shadow: 0 7px 18px rgba(0, 87, 183, .24);
+}
+/* Não posicionar o botão Voltar em cima do cabeçalho fixo. */
+body > .menu-global ~ .pagina-topo .voltar,
+body > .menu-global ~ .voltar,
+body > .menu-global ~ .btn {
+    top: calc(var(--menu-altura) + 12px) !important;
+}
+/* Cabeçalhos internos usam o espaço de página normal, após o menu. */
+body > .menu-global ~ .pagina-topo { padding-top: 66px; }
+body > .menu-global ~ .auth-shell { min-height: calc(100vh - var(--menu-altura)); }
+body > .menu-global ~ .auth-shell .voltar { top: 16px; }
+@media (max-width: 900px) {
+    :root { --menu-altura: 150px; }
+    body .menu-global {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 0 7px;
+    }
+    body .menu-global .menu-global-logo { font-size: 25px; }
+    body .menu-global nav {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0 8px;
+    }
+    body .menu-global .menu-global-links,
+    body .menu-global .menu-global-acoes { width: 100%; gap: 3px; }
+    body .menu-global nav a { min-height: 35px; padding: 6px 11px; font-size: 12px; }
+    body .menu-global nav .menu-global-cta { padding: 7px 13px; }
+
+    body > .menu-global ~ .pagina-topo .voltar,
+    body > .menu-global ~ .voltar,
+    body > .menu-global ~ .btn { top: calc(var(--menu-altura) + 9px) !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+    body .menu-global nav a { transition: none; }
+}
+
+@media (max-width: 360px) {
+    body .menu-global nav a { padding-inline: 8px; font-size: 11px; }
+    body .menu-global nav .menu-global-cta { padding-inline: 9px; }
+}

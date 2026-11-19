@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portal de Notícias Inclusivas</title>
+
+<link rel="shortcut icon" href="../html/ico/Sinaliza+.png" type="Sinaliza+">
+
+<link rel="stylesheet" href="../html/css/noticias.css">
+
+<!-- Fonte bonita -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/Acessibilidade.css">
+    <link rel="stylesheet" href="css/MenuGlobal.css">
+</head>
+
+<body>
+<header class="menu-global" aria-label="Menu principal Sinaliza+">
+    <a class="menu-global-logo" href="Sinaliza.html" aria-label="Sinaliza+ — página inicial">Sinaliza+</a>
+    <nav aria-label="Navegação principal">
+        <div class="menu-global-links">
+            <a href="Sinaliza.html#inicio">Início</a>
+            <a href="Sinaliza.html#sobre">Sobre</a>
+            <a href="Sinaliza.html#recursos">Recursos</a>
+            <a href="Sinaliza.html#contato">Contato</a>
+        </div>
+        <div class="menu-global-acoes">
+            <a class="menu-global-cta" href="ConectarInterprete.html" aria-label="Intérprete 24 horas">Intérprete 24h</a>
+            <a class="menu-global-cta secundario" href="Interpretes.html" aria-label="Seja intérprete de Libras">Seja Intérprete</a>
+        </div>
+    </nav>
+</header>
+
+
+<!-- BOTÃO VOLTAR -->
+<button class="voltar" onclick="window.location.href='Sinaliza.html'">
+    ⬅ Voltar
+</button>
+
+<!-- HEADER -->
+<header>
+    <h1>Portal de Notícias Acessíveis</h1>
+    <p>Informações importantes para a comunidade surda</p>
+</header>
+
+<!-- CONTAINER -->
+<div class="container">
+
+    <!-- CARD 1 -->
+    <div class="noticia">
+        <h2>História da Libras</h2>
+
+        <p>
+            A Libras foi reconhecida oficialmente no Brasil, garantindo mais inclusão e comunicação para a comunidade surda.
+        </p>
+
+        <button class="btn"
+        onclick="window.location.href='HistoriaLibras.html'">
+            Saiba Mais
+        </button>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="noticia">
+        <h2>INES</h2>
+
+        <p>
+            (Instituto Nacional de Educação Surda) 
+        </p>
+
+        <button class="btn" onclick="window.location.href='INES.html'">
+            Saiba Mais
+        </button>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="noticia">
+        <h2>Direitos da Comunidade Surda</h2>
+
+        <p>
+            Campanhas reforçam a importância da acessibilidade
+            em locais públicos.
+        </p>
+
+        <button class="btn"
+        onclick="window.location.href='Direitos.html'">
+            Saiba Mais
+        </button>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Portal de Notícias Inclusivas</p>
+</footer>
+
+    <script src="js/Acessibilidade.js"></script>
+
+    <!-- VLibras global: disponível em todas as telas do Sinaliza+ -->
+    <div vw class="enabled" aria-label="VLibras - tradução para Libras">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>window.addEventListener('load', function(){ if (window.VLibras) new window.VLibras.Widget('https://vlibras.gov.br/app'); });</script>
+</body>
+</html>
+

@@ -1,0 +1,12 @@
+SINALIZA+ — PACOTE PARA DEMONSTRAÇÃO ACADÊMICA (FRONT-END)
+
+1. Envie o conteúdo deste ZIP para a pasta htdocs do seu host.
+2. O index.php encaminha a página inicial para /html/Sinaliza.html.
+3. O .htaccess desativa listagem de pastas e bloqueia acesso público a backend/, database/ e docs/.
+4. Este pacote mantém o layout original e o comportamento de demonstração do navegador.
+
+LIMITAÇÃO CRÍTICA: NÃO É UMA VERSÃO DE PRODUÇÃO. A versão original usa localStorage/sessionStorage para cadastros, sessões, intérpretes e eventos. Esses dados não são compartilhados entre visitantes/dispositivos e podem ser alterados no navegador. A área administrativa do front-end não deve proteger dados reais.
+
+O backend PHP incluído no projeto original não é ativado neste pacote porque os endpoints administrativos ainda não implementam autenticação/autorização no servidor e há incompatibilidades de nomes de funções. Para uma versão pública real, corrigir e auditar API, autenticação e sessões PHP, CSRF, permissões, validação, rate limiting, configuração de segredos e integração MySQL antes de liberar os endpoints.
+
+Depois de configurar hospedagem e subdomínio, teste todas as páginas, imagens, CSS, menu, VLibras, login e fluxos de demonstração em janela anônima e em outro dispositivo.

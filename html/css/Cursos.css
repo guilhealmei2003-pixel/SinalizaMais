@@ -1,0 +1,201 @@
+/* RESET */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body{
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0059b3, #00c2ff);
+    min-height: 100vh;
+    color: #333;
+}
+
+/* BOTÃO VOLTAR */
+.btn{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: white;
+    color: #0059b3;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.btn:hover{
+    background: #0059b3;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* HEADER */
+header{
+    text-align: center;
+    padding: 90px 20px 40px;
+    color: white;
+    animation: fadeDown 1s ease;
+}
+
+header h1{
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+
+header p{
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* MAIN */
+main{
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding-bottom: 40px;
+}
+
+/* CARD CURSO */
+.curso{
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: 0.4s;
+    animation: fadeUp 1s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* barra decorativa */
+.curso::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, #0059b3, #00c2ff);
+}
+
+/* hover card */
+.curso:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* TITULO */
+.curso h2{
+    color: #0059b3;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+}
+
+/* TEXTO */
+.curso p{
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* BOTÃO */
+button{
+    background: linear-gradient(to right, #0059b3, #00c2ff);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+/* hover botão */
+button:hover{
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* FOOTER */
+footer{
+    background: rgba(0,0,0,0.85);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeDown{
+    from{
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVO */
+@media(max-width:768px){
+
+    header h1{
+        font-size: 2rem;
+    }
+
+    .btn{
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+}
+
+/* Sinaliza+ — tema claro, clean e acessível */
+body{background:#f4f7fb;color:#263746}
+header{color:#263746;animation:none}
+header h1{color:#234b70}
+header p{color:#536678;opacity:1}
+.btn{color:#315f8b;border:1px solid #dce6ef;box-shadow:0 3px 12px rgba(28,55,80,.08)}
+.btn:hover{background:#edf4fa;color:#234b70;transform:none}
+.curso{background:#fff;border:1px solid #dce6ef;box-shadow:0 5px 18px rgba(31,57,81,.06);animation:none}
+.curso::before{height:4px;background:#9dbbd7}
+.curso:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(31,57,81,.10)}
+.curso h2{color:#28577f}
+button{background:#315f8b}
+button:hover{background:#244b70;transform:translateY(-1px);opacity:1}
+footer{background:#eaf0f6;color:#526577}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+
+
+/* Sinaliza+ — azul-claro acolhedor e cards em formato de balão */
+body{background:#eaf4ff!important;background-image:radial-gradient(ellipse at 8% 8%,rgba(173,211,246,.30),transparent 34%),radial-gradient(ellipse at 92% 88%,rgba(193,224,250,.32),transparent 32%);color:#263f55}
+.curso{border:1.5px solid #b9d7f2;border-radius:20px;background:linear-gradient(145deg,#fff 0%,#fafdff 100%);box-shadow:0 7px 20px rgba(54,104,151,.10),inset 0 0 0 3px rgba(224,240,255,.52);overflow:hidden}
+.curso::before{height:5px;background:linear-gradient(90deg,#78b7eb,#b5d9f8);border-radius:20px 20px 0 0}
+.curso:hover{border-color:#8ebfe9;box-shadow:0 11px 26px rgba(54,104,151,.16);transform:translateY(-3px)}
+
+/* Cards de cursos com títulos e botões nivelados. */
+main > .curso { display: flex; flex-direction: column; min-width: 0; }
+main > .curso h2 { min-height: 2.6em; line-height: 1.3; overflow-wrap: anywhere; }
+main > .curso > button:last-child { margin-top: auto; align-self: flex-start; }

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Encontre intérpretes de Libras aprovados pelo Sinaliza+ e entre em contato para solicitar ajuda.">
+<title>Conectar ao Intérprete | Sinaliza+</title>
+<link rel="shortcut icon" href="ico/Sinaliza+.png" type="image/png">
+<link rel="stylesheet" href="css/ConectarInterprete.css">
+<link rel="stylesheet" href="css/Acessibilidade.css">
+    <link rel="stylesheet" href="css/MenuGlobal.css">
+</head>
+<body>
+<header class="menu-global" aria-label="Menu principal Sinaliza+">
+    <a class="menu-global-logo" href="Sinaliza.html" aria-label="Sinaliza+ — página inicial">Sinaliza+</a>
+    <nav aria-label="Navegação principal">
+        <div class="menu-global-links">
+            <a href="Sinaliza.html#inicio">Início</a>
+            <a href="Sinaliza.html#sobre">Sobre</a>
+            <a href="Sinaliza.html#recursos">Recursos</a>
+            <a href="Sinaliza.html#contato">Contato</a>
+        </div>
+        <div class="menu-global-acoes">
+            <a class="menu-global-cta" href="ConectarInterprete.html" aria-label="Intérprete 24 horas">Intérprete 24h</a>
+            <a class="menu-global-cta secundario" href="Interpretes.html" aria-label="Seja intérprete de Libras">Seja Intérprete</a>
+        </div>
+    </nav>
+</header>
+
+<header class="pagina-topo">
+  <a class="voltar" href="Sinaliza.html">← Voltar ao início</a>
+  <span class="selo">ACESSIBILIDADE • CONEXÃO</span>
+  <h1>Conectar ao Intérprete</h1>
+  <p>Encontre intérpretes de Libras cadastrados e aprovados pela administração do Sinaliza+. Você pode consultar a localidade, modalidade e formas de contato para solicitar ajuda.</p>
+</header>
+<main class="conteudo">
+  <div class="ajuda-duas-colunas">
+    <section class="destaque">
+      <div class="icone-grande" aria-hidden="true">🤝</div>
+      <div><h2>Precisa de ajuda em Libras?</h2><p>Escolha um intérprete aprovado e entre em contato diretamente. O Sinaliza+ apresenta apenas profissionais com cadastro aprovado pelo administrador.</p><div class="seguranca"><strong>🛡️ Segurança:</strong> perfis exibidos nesta tela passaram pela análise administrativa.</div></div>
+    </section>
+    <section class="aviso-ajuda">
+      <a class="icone-grande icone-central-direto" href="https://atendimento.gestalkconecta.com.br/backoffice/threads/initiate/6eb8903d-69e1-416b-a7a6-1292a7f9c827" target="_blank" rel="noopener noreferrer" aria-label="Abrir o atendimento direto da Central de Libras de Praia Grande – SP em nova aba" title="Abrir o atendimento direto da Central de Libras de Praia Grande – SP">⏱️</a>
+      <div><h2>Precisa de atendimento imediato?</h2><p>Para situações que envolvam emergência ou risco à vida, procure os serviços de emergência apropriados. O contato com um intérprete pelo Sinaliza+ não substitui serviços públicos de emergência.</p><a class="botao botao-claro" href="https://atendimento.gestalkconecta.com.br/backoffice/threads/initiate/6eb8903d-69e1-416b-a7a6-1292a7f9c827" target="_blank" rel="noopener noreferrer">Conhecer a Central de Libras de Praia Grande – SP →</a></div>
+    </section>
+  </div>
+
+  <section class="filtros" aria-labelledby="titulo-busca">
+    <h2 id="titulo-busca">Encontrar intérprete</h2>
+    <div class="filtro-grid">
+      <label>Nome ou palavra-chave<input id="busca" type="search" placeholder="Ex.: Ana, educação, saúde..."></label>
+      <label>Localidade<input id="localidade" type="search" placeholder="Ex.: Praia Grande"></label>
+      <label>Modalidade<select id="modalidade"><option value="">Todas</option><option>Presencial</option><option>Online</option><option>Presencial e online</option></select></label>
+    </div>
+    <p id="resultado" class="resultado" aria-live="polite"></p>
+  </section>
+
+  <section id="lista-interpretes" class="lista-conectar" aria-live="polite"></section>
+
+  <section id="vazio" class="vazio" hidden>
+    <h2>Nenhum intérprete encontrado</h2>
+    <p>Tente alterar os filtros. Somente intérpretes aprovados e ativos aparecem nesta área.</p>
+  </section>
+
+</main>
+<footer class="rodape">Sinaliza+ <span>Informação, inclusão e acessibilidade.</span></footer>
+<script src="js/Acessibilidade.js"></script>
+<script src="js/ConectarInterprete.js"></script>
+
+    <!-- VLibras global: disponível em todas as telas do Sinaliza+ -->
+    <div vw class="enabled" aria-label="VLibras - tradução para Libras">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>window.addEventListener('load', function(){ if (window.VLibras) new window.VLibras.Widget('https://vlibras.gov.br/app'); });</script>
+</body>
+</html>

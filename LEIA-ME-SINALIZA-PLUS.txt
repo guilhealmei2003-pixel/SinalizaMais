@@ -1,0 +1,17 @@
+SINALIZA+ — VERSÃO TCC FUNCIONAL
+
+O que foi corrigido nesta versão:
+- Validação de e-mail não fica limitada a Gmail.
+- Senhas continuam usando PBKDF2 + SHA-256 com salt aleatório no protótipo.
+- A verificação de senha considera a quantidade de iterações salva no cadastro.
+- Comparações de hashes usam comparação sem retorno antecipado por caractere.
+- Links externos publicados pela administração aceitam somente HTTP/HTTPS.
+- Mantido o login de intérprete e o login administrativo persistentes até o logout.
+- Mantido o layout visual existente do Sinaliza+.
+- Mantida a navegação pública sem exigir cadastro da comunidade surda.
+- Corrigidos textos que chamavam o cadastro comum de cadastro administrativo.
+
+IMPORTANTE SOBRE A VERSÃO TCC
+Esta versão continua sendo um protótipo funcional no navegador. Os dados de usuários, intérpretes, sessões e eventos ainda são armazenados no localStorage/sessionStorage.
+
+Para uma versão de produção, o próximo passo técnico é migrar autenticação e conteúdo para um backend com HTTPS, banco de dados e sessões/tokens seguros. Não foi simulado um banco de dados dentro do HTML/JavaScript para evitar apresentar como pronto algo que ainda não é.

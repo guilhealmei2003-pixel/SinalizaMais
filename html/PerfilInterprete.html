@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Área privada do intérprete de Libras no Sinaliza+. Consulte seus dados e o status da análise administrativa.">
+<title>Meu Perfil | Sinaliza+</title>
+<link rel="shortcut icon" href="ico/Sinaliza+.png" type="image/png">
+<link rel="stylesheet" href="css/Conteudo.css"><link rel="stylesheet" href="css/Acessibilidade.css">
+    <link rel="stylesheet" href="css/MenuGlobal.css"><link rel="stylesheet" href="css/AreaPrivada.css">
+</head>
+<body>
+<header class="menu-global" aria-label="Menu principal Sinaliza+">
+    <a class="menu-global-logo" href="Sinaliza.html" aria-label="Sinaliza+ — página inicial">Sinaliza+</a>
+    <nav aria-label="Navegação principal">
+        <div class="menu-global-links">
+            <a href="Sinaliza.html#inicio">Início</a>
+            <a href="Sinaliza.html#sobre">Sobre</a>
+            <a href="Sinaliza.html#recursos">Recursos</a>
+            <a href="Sinaliza.html#contato">Contato</a>
+        </div>
+        <div class="menu-global-acoes">
+            <a class="menu-global-cta" href="ConectarInterprete.html" aria-label="Intérprete 24 horas">Intérprete 24h</a>
+            <a class="menu-global-cta secundario" href="Interpretes.html" aria-label="Seja intérprete de Libras">Seja Intérprete</a>
+        </div>
+    </nav>
+</header>
+
+<header class="pagina-topo"><a class="voltar" href="Sinaliza.html">← Voltar ao início</a><span class="selo">ÁREA DO INTÉRPRETE</span><h1 id="perfil-titulo">Meu Perfil</h1><p>Acompanhe seus dados profissionais e o resultado da análise administrativa do seu cadastro.</p></header>
+<main class="conteudo">
+<section class="destaque" id="status-card"><span class="numero" id="status-icone">!</span><div><h2 id="status-titulo">Status do cadastro</h2><p id="status-texto"></p><p id="status-detalhe"></p><button class="botao" id="sair-interprete" type="button">Desconectar do perfil</button></div></section>
+<section class="referencia"><h2 id="perfil-boasvindas">Seus dados</h2><div id="dados-perfil"></div></section>
+<section class="referencia" id="edicao-section"><h2>Seu perfil profissional</h2><p>Você pode atualizar seus dados profissionais enquanto o cadastro estiver em análise ou aprovado.</p><form id="form-editar-interprete" class="form-interprete"><label for="edit-telefone">Telefone / WhatsApp</label><input id="edit-telefone" required><label for="edit-cidade">Cidade / região</label><input id="edit-cidade" required><label for="edit-atuacao">Área de atuação</label><input id="edit-atuacao" required><label for="edit-disponibilidade">Disponibilidade</label><input id="edit-disponibilidade" required><label for="edit-modalidade">Modalidade</label><select id="edit-modalidade"><option>Presencial</option><option>Online</option><option>Presencial e online</option></select><label for="edit-certificacao">Formação / certificação</label><input id="edit-certificacao"><label for="edit-foto">Foto do perfil (opcional)</label><input id="edit-foto" type="file" accept="image/*"><small>Selecione uma nova foto para substituir a atual. Deixe em branco para manter a foto atual.</small><div id="edit-foto-preview" aria-live="polite"></div><button class="botao" type="submit">Salvar alterações</button><p class="mensagem-interprete" id="mensagem-edicao" role="status" aria-live="polite"></p></form></section>
+<section class="referencia"><h2>Como funciona a análise?</h2><p><strong>Pendente:</strong> o cadastro foi recebido e aguarda análise administrativa.</p><p><strong>Aprovado:</strong> o perfil profissional pode ser disponibilizado na área pública.</p><p><strong>Recusado:</strong> o administrador informou um motivo e o intérprete pode consultar essa justificativa nesta tela.</p><p><strong>Bloqueado:</strong> o acesso profissional foi interrompido por decisão administrativa.</p></section>
+<section class="referencia"><h2>Navegar no Sinaliza+</h2><div class="links-oficiais"><a class="botao botao-claro" href="Sinaliza.html">Início</a><a class="botao botao-claro" href="Eventos.html">Eventos</a><a class="botao botao-claro" href="Noticias.html">Notícias</a><a class="botao botao-claro" href="Direitos.html">Direitos</a><a class="botao botao-claro" href="CentralLibrasPG.html">Central de Libras de Praia Grande – SP</a><a class="botao botao-claro" href="Interpretes.html">Informações sobre intérpretes</a></div></section>
+</main>
+<footer class="rodape">Sinaliza+ <span>Transparência, segurança e acessibilidade.</span></footer>
+<script src="js/Acessibilidade.js"></script><script>
+(() => {
+ const KEY='sinaliza_interpretes_v1', SESSION='sinaliza_interprete_sessao_v2';
+ let session; try { session=JSON.parse(localStorage.getItem(SESSION)||'null'); } catch { session=null; }
+ if(!session){ window.location.replace('LoginInterprete.html'); return; }
+ let users=[]; try { users=JSON.parse(localStorage.getItem(KEY)||'[]'); } catch { users=[]; }
+ let user=users.find(item=>item.email===session.email);
+ if(!user){ localStorage.removeItem(SESSION); window.location.replace('LoginInterprete.html'); return; }
+ const statusMeta={
+   pendente:{label:'Pendente de análise',icone:'!',texto:'Seu cadastro foi recebido e está aguardando a análise do administrador.',classe:'status-pendente'},
+   aprovado:{label:'Cadastro aprovado',icone:'✓',texto:'Seu cadastro foi aprovado pelo administrador. Seu perfil profissional pode ser disponibilizado no Sinaliza+.',classe:'status-aprovado'},
+   reprovado:{label:'Cadastro recusado',icone:'×',texto:'Seu cadastro foi recusado pelo administrador. Consulte abaixo a justificativa informada.',classe:'status-reprovado'},
+   bloqueado:{label:'Acesso bloqueado',icone:'!',texto:'Seu acesso profissional está bloqueado pelo administrador. Consulte abaixo a justificativa.',classe:'status-bloqueado'}
+ };
+ const formatDate=value=>{if(!value)return '';try{return new Intl.DateTimeFormat('pt-BR',{dateStyle:'short',timeStyle:'short'}).format(new Date(value));}catch{return '';}};
+ const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+ async function imageFileToDataUrl(file) {
+   if (!file) return '';
+   if (!file.type || !file.type.startsWith('image/')) throw new Error('Selecione um arquivo de imagem válido.');
+   if (file.size > 12 * 1024 * 1024) throw new Error('A imagem deve ter até 12 MB.');
+   const source=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=()=>reject(new Error('Não foi possível ler a imagem.'));r.readAsDataURL(file);});
+   const img=await new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=()=>reject(new Error('Não foi possível abrir essa imagem.'));i.src=source;});
+   const scale=Math.min(1,600/Math.max(img.width,img.height)),canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(img.width*scale));canvas.height=Math.max(1,Math.round(img.height*scale));canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);return canvas.toDataURL('image/jpeg',0.78);
+ }
+ const editPhoto=document.getElementById('edit-foto');
+ editPhoto.addEventListener('change',async()=>{const preview=document.getElementById('edit-foto-preview');preview.replaceChildren();if(!editPhoto.files||!editPhoto.files[0])return;try{const img=document.createElement('img');img.src=await imageFileToDataUrl(editPhoto.files[0]);img.alt='Pré-visualização da nova foto';img.style.cssText='display:block;max-width:140px;max-height:140px;object-fit:cover;border-radius:12px;margin:10px 0;';preview.appendChild(img);}catch(error){document.getElementById('mensagem-edicao').textContent=error.message;editPhoto.value='';}});
+ const render=()=>{
+   const status=user.status||'pendente', meta=statusMeta[status]||statusMeta.pendente;
+   document.getElementById('perfil-boasvindas').textContent=`Dados de ${user.nome}`;
+   document.getElementById('status-icone').textContent=meta.icone;
+   document.getElementById('status-titulo').textContent=meta.label;
+   document.getElementById('status-texto').textContent=meta.texto;
+   document.getElementById('status-detalhe').innerHTML=`${user.motivo_status?`<strong>Observação do administrador:</strong> ${escapeHtml(user.motivo_status)}<br>`:''}${user.status_atualizado_em?`Última atualização: ${escapeHtml(formatDate(user.status_atualizado_em))}`:''}`;
+   const card=document.getElementById('status-card'); card.className='destaque '+meta.classe;
+   const photo=user.foto_url?`<img src="${escapeHtml(user.foto_url)}" alt="Foto de ${escapeHtml(user.nome)}" style="max-width:140px;border-radius:12px;margin-bottom:12px;">`:'';
+   document.getElementById('dados-perfil').innerHTML=`<div class="perfil-interprete"><div>${photo}<p><strong>Nome:</strong> ${escapeHtml(user.nome)}</p><p><strong>E-mail:</strong> ${escapeHtml(user.email)}</p><p><strong>Telefone:</strong> ${escapeHtml(user.telefone||'')}</p><p><strong>Cidade/região:</strong> ${escapeHtml(user.cidade||'')}</p><p><strong>Área de atuação:</strong> ${escapeHtml(user.atuacao||'')}</p><p><strong>Disponibilidade:</strong> ${escapeHtml(user.disponibilidade||'')}</p><p><strong>Modalidade:</strong> ${escapeHtml(user.modalidade||'Presencial')}</p><p><strong>Formação/certificação:</strong> ${escapeHtml(user.certificacao||'Não informado')}</p><p><strong>Status:</strong> ${escapeHtml(meta.label)}</p></div></div>`;
+   ['edit-telefone','edit-cidade','edit-atuacao','edit-disponibilidade','edit-modalidade','edit-certificacao','edit-foto'].forEach(id=>document.getElementById(id).disabled=status==='bloqueado');
+   document.getElementById('edit-telefone').value=user.telefone||''; document.getElementById('edit-cidade').value=user.cidade||''; document.getElementById('edit-atuacao').value=user.atuacao||''; document.getElementById('edit-disponibilidade').value=user.disponibilidade||''; document.getElementById('edit-modalidade').value=user.modalidade||'Presencial'; document.getElementById('edit-certificacao').value=user.certificacao||'';
+   document.getElementById('edicao-section').style.display=status==='bloqueado'?'none':'';
+ };
+ document.getElementById('form-editar-interprete').addEventListener('submit',async e=>{e.preventDefault(); const status=user.status||'pendente'; const msg=document.getElementById('mensagem-edicao'); try { user.telefone=document.getElementById('edit-telefone').value.trim(); user.cidade=document.getElementById('edit-cidade').value.trim(); user.atuacao=document.getElementById('edit-atuacao').value.trim(); user.disponibilidade=document.getElementById('edit-disponibilidade').value.trim(); user.modalidade=document.getElementById('edit-modalidade').value; user.certificacao=document.getElementById('edit-certificacao').value.trim(); if(!user.telefone||!user.cidade||!user.atuacao||!user.disponibilidade){msg.textContent='Preencha os campos obrigatórios.';msg.className='mensagem-interprete erro';return;} if(editPhoto.files&&editPhoto.files[0]) user.foto_url=await imageFileToDataUrl(editPhoto.files[0]); if(status==='reprovado'){user.status='pendente';user.ativo=false;user.motivo_status='Dados atualizados pelo intérprete. Aguardando nova análise administrativa.';user.status_atualizado_em=new Date().toISOString();} users=users.map(item=>item.email===user.email?user:item); try { localStorage.setItem(KEY,JSON.stringify(users)); } catch(storageError) { throw new Error('Não foi possível salvar os dados neste navegador. Tente uma imagem menor ou libere espaço no armazenamento.'); } editPhoto.value='';document.getElementById('edit-foto-preview').replaceChildren();msg.textContent=status==='reprovado'?'Dados atualizados. Seu cadastro voltou para análise do administrador.':'Perfil atualizado com sucesso.';msg.className='mensagem-interprete sucesso';render(); } catch(error) { msg.textContent=error.message||'Não foi possível salvar as alterações.';msg.className='mensagem-interprete erro';} });
+ document.getElementById('sair-interprete').addEventListener('click',()=>{localStorage.removeItem(SESSION); window.location.href='Interpretes.html';});
+ render();
+})();
+</script>
+
+    <!-- VLibras global: disponível em todas as telas do Sinaliza+ -->
+    <div vw class="enabled" aria-label="VLibras - tradução para Libras">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>window.addEventListener('load', function(){ if (window.VLibras) new window.VLibras.Widget('https://vlibras.gov.br/app'); });</script>
+</body></html>

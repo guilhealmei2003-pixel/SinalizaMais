@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eventos Inclusivos para a Comunidade Surda</title>
+<link rel="stylesheet" href="../html/css/Eventos.css">
+
+<link rel="shortcut icon" href="../html/ico/Sinaliza+.png" type="Sinaliza+">
+
+    <link rel="stylesheet" href="css/Acessibilidade.css">
+    <link rel="stylesheet" href="css/MenuGlobal.css">
+</head>
+
+<body>
+<header class="menu-global" aria-label="Menu principal Sinaliza+">
+    <a class="menu-global-logo" href="Sinaliza.html" aria-label="Sinaliza+ — página inicial">Sinaliza+</a>
+    <nav aria-label="Navegação principal">
+        <div class="menu-global-links">
+            <a href="Sinaliza.html#inicio">Início</a>
+            <a href="Sinaliza.html#sobre">Sobre</a>
+            <a href="Sinaliza.html#recursos">Recursos</a>
+            <a href="Sinaliza.html#contato">Contato</a>
+        </div>
+        <div class="menu-global-acoes">
+            <a class="menu-global-cta" href="ConectarInterprete.html" aria-label="Intérprete 24 horas">Intérprete 24h</a>
+            <a class="menu-global-cta secundario" href="Interpretes.html" aria-label="Seja intérprete de Libras">Seja Intérprete</a>
+        </div>
+    </nav>
+</header>
+
+
+    <button class="btn" onclick="window.location.href='Sinaliza.html'">Voltar</button>
+
+<header>
+    <h1>Eventos Inclusivos para a Comunidade Surda</h1>
+    <p>Participação, acessibilidade e inclusão social</p>
+</header>
+
+<main>
+
+    <div class="evento">
+        <h2>Palestra sobre Libras</h2>
+        <p><strong>Local:</strong> Centro Cultural Inclusivo</p>
+        <p><strong>Data:</strong> 20 de Maio de 2026</p>
+        <p class="evento-expirado" role="status">Evento expirado — a data já passou.</p>
+        <p>Evento com intérprete de Libras e atividades inclusivas.</p>
+        <button>Participar</button>
+    </div>
+
+    <div class="evento">
+        <h2>Feira da Inclusão</h2>
+        <p><strong>Local:</strong> Parque Municipal</p>
+        <p><strong>Data:</strong> 05 de Junho de 2026</p>
+        <p class="evento-expirado" role="status">Evento expirado — a data já passou.</p>
+        <p>Apresentações culturais, oficinas e acessibilidade para todos.</p>
+        <button>Participar</button>
+    </div>
+
+    <div class="evento">
+        <h2>Workshop de Comunicação Inclusiva</h2>
+        <p><strong>Local:</strong> Universidade Social</p>
+        <p><strong>Data:</strong> 18 de Junho de 2026</p>
+        <p class="evento-expirado" role="status">Evento expirado — a data já passou.</p>
+        <p>Capacitação em Libras e comunicação com pessoas surdas.</p>
+        <button>Participar</button>
+    </div>
+
+<section id="eventos-administracao" class="eventos-dinamicos" aria-label="Eventos publicados pela administração"></section>
+
+</main>
+
+<footer>
+    <p>Portal de Eventos Inclusivos © 2026</p>
+</footer>
+
+    <script src="js/Acessibilidade.js"></script>
+    <script src="js/Eventos.js"></script>
+
+    <!-- VLibras global: disponível em todas as telas do Sinaliza+ -->
+    <div vw class="enabled" aria-label="VLibras - tradução para Libras">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>window.addEventListener('load', function(){ if (window.VLibras) new window.VLibras.Widget('https://vlibras.gov.br/app'); });</script>
+</body>
+</html>
+

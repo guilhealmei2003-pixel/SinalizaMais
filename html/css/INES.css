@@ -1,0 +1,50 @@
+/* INES — visual alinhado à página de Eventos */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#0057b7,#00c2ff);min-height:100vh;color:#333;overflow-x:hidden}
+header{text-align:center;padding:90px 20px 40px;color:#fff;animation:fadeDown 1s ease}
+header h1{font-size:2.8rem;font-weight:700;margin-bottom:10px}
+header p{max-width:760px;margin:auto;font-size:1.2rem;line-height:1.7;opacity:.92}
+.voltar{position:fixed;top:20px;left:20px;z-index:1000;padding:12px 18px;border:0;border-radius:50px;background:#fff;color:#0057b7;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px #0003;transition:.3s}
+.voltar:hover,.voltar:focus-visible{background:#0057b7;color:#fff;transform:scale(1.05);outline:3px solid #9ce9ff;outline-offset:2px}
+.container{width:90%;max-width:1100px;margin:0 auto 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px}
+.card{position:relative;overflow:hidden;padding:28px;background:rgba(255,255,255,.96);border:1px solid #ffffff90;border-radius:20px;box-shadow:0 10px 25px #0002;transition:.35s;animation:fadeUp .8s ease both}
+.card:before{content:"";position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(to right,#0057b7,#00c2ff)}
+.card:hover{transform:translateY(-7px);box-shadow:0 15px 35px #0004}
+.card h2{margin:0 0 15px;color:#0057b7;font-size:1.6rem}
+.card p{margin-bottom:12px;color:#444;line-height:1.75}
+.card ul{margin:12px 0 0 22px}
+.card li{margin-bottom:9px;color:#444;line-height:1.6}
+.botao{display:inline-block;margin-top:12px;padding:13px 22px;border-radius:50px;background:linear-gradient(to right,#0057b7,#00c2ff);color:#fff;text-decoration:none;font-weight:700;box-shadow:0 5px 15px #0057b733;transition:.3s}
+.botao:hover,.botao:focus-visible{transform:translateY(-3px);opacity:.92;outline:3px solid #82defa;outline-offset:3px}
+footer{margin-top:30px;padding:20px;background:rgba(0,0,0,.85);color:white;text-align:center}
+footer p{line-height:1.6}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){header{padding:105px 20px 32px}header h1{font-size:2.2rem}header p{font-size:1rem}.container{width:90%;grid-template-columns:1fr}.card{padding:25px}.voltar{padding:10px 14px;font-size:14px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* Sinaliza+ — tema claro, clean e acessível */
+body{background:#f4f7fb;color:#263746}
+header{color:#263746;animation:none}
+header h1{color:#234b70}
+header p{color:#536678;opacity:1}
+.voltar{color:#315f8b;border:1px solid #dce6ef;box-shadow:0 3px 12px rgba(28,55,80,.08)}
+.voltar:hover,.voltar:focus-visible{background:#edf4fa;color:#234b70;transform:none;outline-color:#9dbbd7}
+.card{background:#fff;border:1px solid #dce6ef;box-shadow:0 5px 18px rgba(31,57,81,.06);animation:none}
+.card:before{height:4px;background:#9dbbd7}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(31,57,81,.10)}
+.card h2{color:#28577f}
+.card p,.card li{color:#536678}
+.botao{background:#315f8b;box-shadow:none}
+.botao:hover,.botao:focus-visible{background:#244b70;transform:translateY(-1px);outline-color:#9dbbd7}
+footer{background:#eaf0f6;color:#526577}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+
+
+/* Sinaliza+ — azul-claro acolhedor e cards em formato de balão */
+body{background:#eaf4ff!important;background-image:radial-gradient(ellipse at 8% 8%,rgba(173,211,246,.30),transparent 34%),radial-gradient(ellipse at 92% 88%,rgba(193,224,250,.32),transparent 32%);color:#263f55}
+.card{border:1.5px solid #b9d7f2;border-radius:20px;background:linear-gradient(145deg,#fff 0%,#fafdff 100%);box-shadow:0 7px 20px rgba(54,104,151,.10),inset 0 0 0 3px rgba(224,240,255,.52);overflow:hidden}
+.card:before{height:5px;background:linear-gradient(90deg,#78b7eb,#b5d9f8);border-radius:20px 20px 0 0}
+.card:hover{border-color:#8ebfe9;box-shadow:0 11px 26px rgba(54,104,151,.16);transform:translateY(-3px)}

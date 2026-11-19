@@ -1,0 +1,47 @@
+SINALIZA+ | ACESSO ADMINISTRATIVO PROTEGIDO
+==========================================
+
+1. Para PUBLICAR no InfinityFree:
+   - Envie o conteúdo da pasta htdocs deste pacote para /htdocs.
+   - Substitua os arquivos que já existirem e ENVIE também a nova pasta /admin.
+   - CONFIRA se o arquivo .htaccess da raiz foi substituído.
+   - O banco de dados e as demais páginas públicas não precisam ser recriados.
+   - Exclua manualmente do servidor os antigos arquivos:
+       /htdocs/html/Admin.html
+       /htdocs/html/AdminLogin.html
+     O novo .htaccess bloqueia esses endereços mesmo se ficarem no servidor.
+
+2. Como o administrador acessa:
+   https://SEU_DOMINIO/admin/
+   Abra este endereço manualmente (salve como favorito privado).
+   Entre com o MESMO e-mail e senha administrativos já usados na versão anterior.
+   O painel fica em /admin/painel.php e o PHP impede acesso sem login.
+
+3. O que muda para visitantes:
+   - Não há link da área administrativa no rodapé ou menu público.
+   - /html/Admin.html e /html/AdminLogin.html ficam proibidos.
+   - O painel /admin/painel.php redireciona usuários não autenticados.
+   - Ações das APIs administrativas exigem sessão no servidor e token CSRF.
+   - O usuário público mantém acesso às informações e aos formulários normais.
+
+4. Cuidados importantes:
+   - Utilize HTTPS na hospedagem.
+   - Nunca divulgue o ZIP, o arquivo config.local.php ou as credenciais do banco.
+   - Recomendamos atualizar a senha administrativa e usar password_hash() na
+     próxima revisão: a verificação SHA-256 antiga foi preservada APENAS para
+     manter o login existente sem exigir troca agora.
+   - O login e os dados de sessão agora são protegidos no PHP, não em localStorage.
+   - Como na versão original, a gestão de eventos e intérpretes no painel ainda
+     usa localStorage, por isso dados ali não são compartilhados entre
+     navegadores. A integração completa com MySQL é uma evolução separada.
+
+5. Testes:
+   - Entre no site público em janela anônima; o link "Área Administrativa"
+     não deverá aparecer.
+   - Tente abrir /admin/painel.php diretamente sem login: deve redirecionar.
+   - Tente abrir /html/Admin.html: deverá dar acesso proibido.
+   - Entre em /admin/ com as credenciais e verifique que o painel abre.
+   - Clique em "Desconectar da administração" e confirme o bloqueio.
+
+AVISO: O endereço de login pode ser conhecido por qualquer pessoa; a segurança
+vem da autenticação no SERVIDOR, não de ocultar o endereço.

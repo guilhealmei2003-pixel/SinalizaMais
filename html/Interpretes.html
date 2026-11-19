@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Informações sobre intérpretes de Libras, legislação e acesso à área exclusiva para profissionais.">
+    <title>Intérpretes de Libras | Sinaliza+</title>
+    <link rel="shortcut icon" href="ico/Sinaliza+.png" type="image/png">
+    <link rel="stylesheet" href="css/Conteudo.css">
+    <link rel="stylesheet" href="css/Acessibilidade.css">
+    <link rel="stylesheet" href="css/MenuGlobal.css">
+</head>
+<body>
+<header class="menu-global" aria-label="Menu principal Sinaliza+">
+    <a class="menu-global-logo" href="Sinaliza.html" aria-label="Sinaliza+ — página inicial">Sinaliza+</a>
+    <nav aria-label="Navegação principal">
+        <div class="menu-global-links">
+            <a href="Sinaliza.html#inicio">Início</a>
+            <a href="Sinaliza.html#sobre">Sobre</a>
+            <a href="Sinaliza.html#recursos">Recursos</a>
+            <a href="Sinaliza.html#contato">Contato</a>
+        </div>
+        <div class="menu-global-acoes">
+            <a class="menu-global-cta" href="ConectarInterprete.html" aria-label="Intérprete 24 horas">Intérprete 24h</a>
+            <a class="menu-global-cta secundario" href="Interpretes.html" aria-label="Seja intérprete de Libras">Seja Intérprete</a>
+        </div>
+    </nav>
+</header>
+
+<header class="pagina-topo">
+    <a class="voltar" href="Sinaliza.html">← Voltar ao início</a>
+    <span class="selo">COMUNICAÇÃO ACESSÍVEL</span>
+    <h1>Intérpretes de Libras</h1>
+    <p>Informações sobre a profissão, legislação e acesso à área exclusiva para profissionais cadastrados.</p>
+</header>
+<main class="conteudo">
+    <section class="destaque">
+        <span class="numero">01</span>
+        <div>
+            <h2>O que faz esse profissional?</h2>
+            <p>Tradutores e intérpretes fazem a mediação da comunicação entre Libras e língua portuguesa, respeitando o sentido, o contexto e as necessidades das pessoas envolvidas.</p>
+            <p>O guia-intérprete também atua na comunicação de pessoas surdocegas, considerando formas de comunicação e orientação adequadas a cada pessoa.</p>
+        </div>
+    </section>
+    <section class="referencia">
+        <h2>Cadastro do intérprete</h2>
+        <p>Área exclusiva para profissionais que desejam cadastrar seus dados de contato e informações profissionais. Após o cadastro, faça login para acessar seu perfil. O cadastro não é necessário para a comunidade surda utilizar o Sinaliza+.</p>
+        <a class="botao" href="AreaInterprete.html">Cadastrar / acessar área do intérprete →</a>
+    </section>
+    <section class="referencia">
+        <h2>Legislação profissional</h2>
+        <p>A Lei nº 14.704/2023 atualizou a regulamentação da profissão de tradutor, intérprete e guia-intérprete de Libras. O Decreto nº 5.626/2005 também estabelece disposições relacionadas à Libras e à acessibilidade.</p>
+        <div class="links-oficiais">
+            <a class="botao" href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14704.htm" target="_blank" rel="noopener noreferrer">Lei 14.704/2023 — Planalto ↗</a>
+            <a class="botao botao-claro" href="https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2005/decreto/d5626.htm" target="_blank" rel="noopener noreferrer">Decreto 5.626/2005 ↗</a>
+        </div>
+    </section>
+</main>
+<footer class="rodape">Sinaliza+ <span>Informação, inclusão e acessibilidade.</span></footer>
+<script src="js/Acessibilidade.js"></script>
+
+    <!-- VLibras global: disponível em todas as telas do Sinaliza+ -->
+    <div vw class="enabled" aria-label="VLibras - tradução para Libras">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>window.addEventListener('load', function(){ if (window.VLibras) new window.VLibras.Widget('https://vlibras.gov.br/app'); });</script>
+</body>
+</html>

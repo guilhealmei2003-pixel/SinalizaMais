@@ -1,0 +1,21 @@
+Options -Indexes
+DirectoryIndex index.php
+
+# Permite somente os endpoints PHP usados pelo Sinaliza+.
+# A autenticacao e validada pelos proprios endpoints PHP.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # URLs antigas da administração NUNCA devem servir painéis HTML públicos.
+  RewriteRule ^html/(Admin|AdminLogin)\.html$ - [F,L,NC]
+
+  # API publica e API autenticada: necessario para formularios e login.
+  RewriteRule ^backend/api/(admin_sessao|contato|conteudos|health|interpretes|interpretes_admin|usuarios)\.php$ - [L,NC]
+
+  # Protege configuracoes, arquivos PHP internos e documentos privados.
+  RewriteRule ^(backend|database|docs)(/|$) - [F,L,NC]
+
+  # Nao servir documentos internos e scripts SQL.
+  RewriteRule (^|/)(README|LEIA-ME|PLANO_EVOLUCAO_TCC)\.(md|txt)$ - [F,L,NC]
+  RewriteRule \.(sql|md|txt)$ - [F,L,NC]
+</IfModule>

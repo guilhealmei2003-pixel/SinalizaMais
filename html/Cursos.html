@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cursos para Comunicação com Surdos</title>
+<link rel="stylesheet" href="../html/css/Cursos.css">
+
+<link rel="shortcut icon" href="../html/ico/Sinaliza+.png" type="Sinaliza+">
+
+    <link rel="stylesheet" href="css/Acessibilidade.css">
+    <link rel="stylesheet" href="css/MenuGlobal.css">
+</head>
+
+<body>
+<header class="menu-global" aria-label="Menu principal Sinaliza+">
+    <a class="menu-global-logo" href="Sinaliza.html" aria-label="Sinaliza+ — página inicial">Sinaliza+</a>
+    <nav aria-label="Navegação principal">
+        <div class="menu-global-links">
+            <a href="Sinaliza.html#inicio">Início</a>
+            <a href="Sinaliza.html#sobre">Sobre</a>
+            <a href="Sinaliza.html#recursos">Recursos</a>
+            <a href="Sinaliza.html#contato">Contato</a>
+        </div>
+        <div class="menu-global-acoes">
+            <a class="menu-global-cta" href="ConectarInterprete.html" aria-label="Intérprete 24 horas">Intérprete 24h</a>
+            <a class="menu-global-cta secundario" href="Interpretes.html" aria-label="Seja intérprete de Libras">Seja Intérprete</a>
+        </div>
+    </nav>
+</header>
+
+
+    <button class="btn" onclick="window.location.href='Sinaliza.html'">Voltar</button>
+
+<header>
+    <h1>Cursos para Comunicação com Surdos</h1>
+    <p>Aprenda Libras e inclusão social</p>
+</header>
+
+<main>
+
+    <div class="curso">
+        <h2>Curso Básico de Libras</h2>
+        <p><strong>Instituição:</strong> Escola Inclusiva</p>
+        <p><strong>Duração:</strong> 3 meses</p>
+        <p>Aprenda sinais básicos e comunicação inicial em Libras.</p>
+        <button>Inscrever-se</button>
+    </div>
+
+    <div class="curso">
+        <h2>Curso Intermediário de Libras</h2>
+        <p><strong>Instituição:</strong> Instituto Acessibilidade</p>
+        <p><strong>Duração:</strong> 6 meses</p>
+        <p>Desenvolva diálogos e comunicação avançada com pessoas surdas.</p>
+        <button>Inscrever-se</button>
+    </div>
+
+    <div class="curso">
+        <h2>Curso de Intérprete de Libras</h2>
+        <p><strong>Instituição:</strong> Centro Educacional Brasil</p>
+        <p><strong>Duração:</strong> 1 ano</p>
+        <p>Formação para atuar profissionalmente como intérprete.</p>
+        <button>Inscrever-se</button>
+    </div>
+
+</main>
+
+<footer>
+    <p>Portal de Cursos Inclusivos © 2026</p>
+</footer>
+
+    <script src="js/Acessibilidade.js"></script>
+
+    <!-- VLibras global: disponível em todas as telas do Sinaliza+ -->
+    <div vw class="enabled" aria-label="VLibras - tradução para Libras">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>window.addEventListener('load', function(){ if (window.VLibras) new window.VLibras.Widget('https://vlibras.gov.br/app'); });</script>
+</body>
+</html>
+

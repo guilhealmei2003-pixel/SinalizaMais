@@ -1,0 +1,179 @@
+/* RESET */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body{
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0057b7, #00a8ff);
+    min-height: 100vh;
+    color: #333;
+}
+
+/* CONTAINER */
+.container{
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* TÍTULO */
+h1{
+    text-align: center;
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 40px;
+    animation: fadeDown 1s ease;
+}
+
+/* BOTÃO VOLTAR */
+.btn{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: white;
+    color: #0066ff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.btn:hover{
+    background: #0066ff;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* CARDS */
+.card{
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: 0.4s;
+    animation: fadeUp 1s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* barra superior decorativa */
+.card::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px;
+    width: 100%;
+    background: linear-gradient(to right, #0066ff, #00c2ff);
+}
+
+/* hover */
+.card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* TITULOS */
+.card h2{
+    color: #0066ff;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+/* TEXTO */
+.card p{
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+/* LISTAS */
+.card ul{
+    margin-left: 20px;
+}
+
+.card li{
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* CARD ESPECIAL (LEIS) */
+.leis{
+    border-left: 6px solid #0066ff;
+    background: rgba(230, 245, 255, 0.95);
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeDown{
+    from{
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVO */
+@media(max-width:768px){
+
+    h1{
+        font-size: 2rem;
+    }
+
+    .btn{
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+}
+.fonte-legal{margin-top:18px;padding:13px 15px;border-left:4px solid #0066ff;border-radius:9px;background:#eef8ff;color:#42576c;font-size:.88rem;line-height:1.6}
+.fontes{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.fontes a{display:inline-block;padding:8px 12px;border-radius:20px;background:#fff;color:#0057b7;border:1px solid #c7e1f3;text-decoration:none;font-size:.82rem;font-weight:600;transition:.25s}
+.fontes a:hover{background:#0066ff;color:#fff}
+.observacao-legal{margin-top:15px;padding:12px 14px;border-radius:10px;background:#fff;color:#52677b;font-size:.86rem;line-height:1.6}
+
+/* Sinaliza+ — tema claro, clean e acessível */
+:root{--sinaliza-blue:#28577f;--sinaliza-ink:#263746;--sinaliza-muted:#536678;--sinaliza-bg:#f4f7fb;--sinaliza-line:#dce6ef;--sinaliza-soft:#edf4fa}
+body{background:var(--sinaliza-bg);color:var(--sinaliza-ink)}
+h1{color:#234b70;animation:none}
+.btn{color:var(--sinaliza-blue);border:1px solid var(--sinaliza-line);box-shadow:0 3px 12px rgba(28,55,80,.10)}
+.btn:hover{background:var(--sinaliza-soft);color:#234b70;transform:none}
+.card{background:#fff;border:1px solid var(--sinaliza-line);box-shadow:0 5px 18px rgba(31,57,81,.06);animation:none}
+.card::before{height:4px;background:#9dbbd7}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(31,57,81,.10)}
+.card h2{color:#28577f}
+.leis{border-left:4px solid #9dbbd7;background:#edf4fa}
+.fonte-legal{border-left-color:#9dbbd7;background:#f2f6fa;color:#536678}
+.fontes a{color:#28577f;border-color:#d5e1ec}
+.fontes a:hover{background:#315f8b;color:#fff}
+.observacao-legal{background:#f7f9fc;color:#536678}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+
+
+/* Sinaliza+ — azul-claro acolhedor e cards em formato de balão */
+body{background:#eaf4ff!important;background-image:radial-gradient(ellipse at 8% 8%,rgba(173,211,246,.30),transparent 34%),radial-gradient(ellipse at 92% 88%,rgba(193,224,250,.32),transparent 32%);color:#263f55}
+.card{border:1.5px solid #b9d7f2;border-radius:20px;background:linear-gradient(145deg,#fff 0%,#fafdff 100%);box-shadow:0 7px 20px rgba(54,104,151,.10),inset 0 0 0 3px rgba(224,240,255,.52);overflow:hidden}
+.card::before{height:5px;background:linear-gradient(90deg,#78b7eb,#b5d9f8);border-radius:20px 20px 0 0}
+.card:hover{border-color:#8ebfe9;box-shadow:0 11px 26px rgba(54,104,151,.16);transform:translateY(-3px)}
+.leis,.fonte-legal,.observacao-legal{border-radius:14px;border:1px solid #cfe3f7;border-left:4px solid #8ebfe9;background:#f3f9ff}

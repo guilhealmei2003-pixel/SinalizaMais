@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+:root{--navy:#003b7a;--blue:#0057b7;--cyan:#00c2ff;--ink:#263746;--muted:#4e6175;--line:#dce8f2;--white:#fff;--green:#197a4b}
+*{box-sizing:border-box} body{margin:0;background:linear-gradient(135deg,#0057b7,#00c2ff);min-height:100vh;color:var(--ink);font-family:'Poppins',sans-serif;line-height:1.65}
+.pagina-topo{padding:88px 22px 40px;text-align:center;color:#fff}.pagina-topo h1{margin:0 auto 10px;font-size:clamp(2rem,5vw,2.8rem);line-height:1.2}.pagina-topo p{max-width:850px;margin:auto;font-size:1.05rem}.selo{display:inline-block;margin-bottom:8px;color:#e3f8ff;font-size:12px;font-weight:700;letter-spacing:.13em}.voltar{position:fixed;z-index:1000;top:18px;left:18px;padding:11px 17px;border-radius:50px;background:#fff;color:var(--blue);text-decoration:none;font-weight:700;box-shadow:0 4px 12px #0003}.voltar:focus-visible,.botao:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #9ce9ff;outline-offset:2px}
+.conteudo{width:92%;max-width:1120px;margin:25px auto 50px}.destaque,.filtros,.vazio,.aviso-ajuda{background:rgba(255,255,255,.97);border-radius:20px;box-shadow:0 10px 25px #0002}.destaque{display:flex;gap:22px;padding:28px 32px}.icone-grande{display:grid;place-items:center;flex:0 0 60px;width:60px;height:60px;border-radius:18px;background:linear-gradient(135deg,var(--blue),var(--cyan));font-size:30px}.destaque h2,.filtros h2,.aviso-ajuda h2{margin:0 0 8px;color:var(--blue)}.destaque p{margin:5px 0;color:var(--muted)}.seguranca{margin-top:13px;padding:10px 13px;border-radius:12px;background:#edf9f3;color:#185c3b;font-size:13px}
+.filtros{margin-top:18px;padding:25px 28px}.filtro-grid{display:grid;grid-template-columns:2fr 1.3fr 1fr;gap:13px}.filtro-grid label{display:grid;gap:6px;font-size:13px;font-weight:700}.filtro-grid input,.filtro-grid select{width:100%;min-height:46px;padding:10px 13px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);font:inherit;font-size:14px}.resultado{margin:14px 0 0;color:var(--muted);font-size:13px}
+.lista-conectar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;margin-top:18px}.card-interprete{display:flex;gap:18px;padding:21px;background:#fff;border-radius:18px;border:1px solid var(--line);box-shadow:0 8px 20px #0002}.foto{flex:0 0 105px;width:105px;height:105px;object-fit:cover;border-radius:16px;border:2px solid #d7e8f4;background:#edf5fa}.sem-foto{display:grid;place-items:center;font-size:34px;color:var(--blue)}.dados{min-width:0;flex:1}.dados h3{margin:0 0 4px;color:var(--blue);font-size:1.2rem}.validado{display:inline-block;margin:0 0 9px;padding:4px 9px;border-radius:20px;background:#eaf8f0;color:var(--green);font-size:11px;font-weight:800}.dados p{margin:4px 0;color:var(--muted);font-size:13px}.acoes{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}.botao{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 15px;border-radius:50px;background:linear-gradient(to right,var(--blue),var(--cyan));color:#fff;text-decoration:none;font-weight:700;font-size:13px}.botao-claro{background:#fff;color:var(--blue);border:1px solid #bfd7e8}.vazio{margin-top:18px;padding:30px;text-align:center}.vazio h2{margin:0;color:var(--blue)}.vazio p{color:var(--muted)}.aviso-ajuda{margin-top:18px;padding:25px 28px}.aviso-ajuda p{color:var(--muted);font-size:13px}.rodape{margin-top:30px;padding:20px;text-align:center;background:#000d;color:#fff;font-weight:700}.rodape span{display:block;color:#d3e8f8;font-size:13px;font-weight:400}
+@media(max-width:800px){.filtro-grid{grid-template-columns:1fr}.lista-conectar{grid-template-columns:1fr}}@media(max-width:560px){.pagina-topo{padding:95px 20px 35px}.destaque{flex-direction:column;padding:23px}.filtros,.aviso-ajuda{padding:22px}.card-interprete{flex-direction:column}.foto{width:90px;height:90px}.voltar{left:12px;top:12px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* Sinaliza+ — tema claro, clean e acessível */
+:root{--navy:#234b70;--blue:#315f8b;--cyan:#9dbbd7;--ink:#263746;--muted:#536678;--line:#dce6ef;--white:#fff;--green:#197a4b}
+body{background:#f4f7fb;color:var(--ink)}
+.pagina-topo{color:var(--ink)}
+.pagina-topo h1{color:#234b70}
+.pagina-topo p{color:#536678}
+.selo{color:#52799c}
+.voltar{color:#315f8b;border:1px solid #dce6ef;box-shadow:0 3px 12px rgba(28,55,80,.08)}
+.voltar:hover{background:#edf4fa;color:#234b70}
+.destaque,.filtros,.vazio,.aviso-ajuda,.card-interprete{background:#fff;border:1px solid #dce6ef;box-shadow:0 5px 18px rgba(31,57,81,.06)}
+.icone-grande{background:#eaf2f9;color:#315f8b;border:1px solid #dce8f2}
+.destaque h2,.filtros h2,.aviso-ajuda h2,.dados h3,.vazio h2{color:#28577f}
+.destaque p,.resultado,.dados p,.aviso-ajuda p,.vazio p{color:#536678}
+.botao{background:#315f8b}
+.botao:hover{background:#244b70}
+.botao-claro{background:#fff;color:#315f8b;border-color:#d5e1ec}
+.rodape{background:#eaf0f6;color:#526577}
+.rodape span{color:#64788b}
+
+
+
+/* Sinaliza+ — azul-claro acolhedor e cards em formato de balão */
+body{background:#eaf4ff!important;background-image:radial-gradient(ellipse at 8% 8%,rgba(173,211,246,.30),transparent 34%),radial-gradient(ellipse at 92% 88%,rgba(193,224,250,.32),transparent 32%);color:#263f55}
+.destaque,.filtros,.vazio,.aviso-ajuda,.card-interprete{border:1.5px solid #b9d7f2;border-radius:20px;background:linear-gradient(145deg,#fff 0%,#fafdff 100%);box-shadow:0 7px 20px rgba(54,104,151,.10),inset 0 0 0 3px rgba(224,240,255,.52)}
+.destaque{position:relative;overflow:hidden}
+.destaque:before{height:5px;background:linear-gradient(90deg,#78b7eb,#b5d9f8)}
+.card-interprete:hover,.destaque:hover{border-color:#8ebfe9;box-shadow:0 11px 26px rgba(54,104,151,.16)}
+.filtros,.aviso-ajuda{background:#f5faff}
+.icone-grande{border-radius:18px;background:#e4f2ff;border-color:#b9d7f2}
+
+
+/* Duas chamadas de ajuda em colunas responsivas */
+.ajuda-duas-colunas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:18px;align-items:stretch}
+.ajuda-duas-colunas .destaque,.ajuda-duas-colunas .aviso-ajuda{margin:0;min-width:0;display:flex;gap:18px;align-items:flex-start}
+.ajuda-duas-colunas .aviso-ajuda{padding:28px 32px}
+.ajuda-duas-colunas .aviso-ajuda h2{margin:0 0 8px;color:#28577f}
+.ajuda-duas-colunas .aviso-ajuda .botao{margin-top:12px}
+@media(max-width:800px){.ajuda-duas-colunas{grid-template-columns:1fr}.ajuda-duas-colunas .destaque,.ajuda-duas-colunas .aviso-ajuda{padding:23px;flex-direction:column}}
+
+/* Dois painéis de ajuda lado a lado, com adaptação para telas pequenas */
+.ajuda-duas-colunas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:stretch}
+.ajuda-duas-colunas>.destaque,.ajuda-duas-colunas>.aviso-ajuda{height:100%;margin:0;min-width:0}
+.ajuda-duas-colunas h2{font-size:clamp(1.1rem,2vw,1.4rem)}
+@media(max-width:700px){.ajuda-duas-colunas{grid-template-columns:1fr}}
+
+/* Refinamento de layout das duas opções de ajuda. */
+.ajuda-duas-colunas{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important;align-items:stretch!important}
+.ajuda-duas-colunas>*{min-width:0!important;height:100%}
+@media(max-width:700px){.ajuda-duas-colunas{grid-template-columns:1fr!important}}
+
+/* Acesso direto ao site oficial da Central de Libras de Praia Grande – SP */
+.icone-central-direto{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:inherit;cursor:pointer;flex:0 0 auto}
+.icone-central-direto:focus-visible{outline:3px solid #2563eb;outline-offset:4px;border-radius:8px}

@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+:root{--navy:#003b7a;--blue:#0057b7;--cyan:#00c2ff;--ink:#333;--muted:#4e6175;--line:#dce8f2;--paper:#f4f8fc;--white:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(135deg,#0057b7,#00c2ff);min-height:100vh;color:var(--ink);font-family:'Poppins',sans-serif;line-height:1.7}
+.pagina-topo{position:relative;overflow:hidden;padding:90px 22px 40px;text-align:center;color:white;animation:fadeDown 1s ease}
+.pagina-topo h1{position:relative;z-index:1;margin:0 auto 10px;font-size:clamp(2rem,5vw,2.8rem);line-height:1.2}
+.pagina-topo p{position:relative;z-index:1;max-width:760px;margin:auto;color:#fff;font-size:1.1rem;opacity:.92}
+.selo{display:inline-block;margin-bottom:8px;color:#e3f8ff;font-size:12px;font-weight:700;letter-spacing:.15em}
+.voltar{position:fixed;z-index:1000;top:20px;left:20px;padding:12px 18px;border:0;border-radius:50px;background:white;color:var(--blue);text-decoration:none;font-weight:700;box-shadow:0 4px 12px #0003;transition:.3s}
+.voltar:hover,.voltar:focus-visible{background:var(--blue);color:white;transform:scale(1.05);outline:3px solid #9ce9ff;outline-offset:2px}
+.conteudo{width:90%;max-width:1100px;margin:30px auto 50px}
+.destaque{position:relative;overflow:hidden;display:grid;grid-template-columns:56px 1fr;gap:22px;padding:30px 34px;background:rgba(255,255,255,.96);border:1px solid #ffffff90;border-radius:20px;box-shadow:0 10px 25px #0002;animation:fadeUp 1s ease}
+.destaque:before,.cartao:before{content:"";position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(to right,#0057b7,#00c2ff)}
+.numero,.icone{display:grid;place-items:center;width:48px;height:48px;border-radius:15px;color:white;background:linear-gradient(to right,#0057b7,#00c2ff);font-weight:800}
+.destaque h2,.cartao h2,.referencia h2{margin:0 0 10px;color:var(--blue);font-size:22px}
+.destaque p{margin:8px 0;color:var(--muted)}
+.grade{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
+.cartao{position:relative;overflow:hidden;padding:27px;background:rgba(255,255,255,.96);border:1px solid #ffffff90;border-radius:20px;box-shadow:0 10px 25px #0002;transition:.35s;animation:fadeUp 1s ease}
+.cartao:hover,.destaque:hover{transform:translateY(-6px);box-shadow:0 15px 35px #0004}
+.cartao .icone{margin-bottom:20px;width:42px;height:42px;border-radius:13px}
+.cartao h2{font-size:1.6rem}
+.cartao p{margin:12px 0 0;color:var(--muted);font-size:14px}
+.cartao ul,.cartao ol{margin:12px 0 0;padding-left:21px;color:var(--muted)}
+.cartao li{padding:4px 0 4px 3px}
+.referencia{margin-top:18px;padding:28px 32px;border-radius:20px;background:rgba(255,255,255,.96);border:1px solid #ffffff90;box-shadow:0 10px 25px #0002}
+.referencia p{margin:0 0 18px;color:var(--muted)}
+.links-oficiais{display:flex;flex-wrap:wrap;gap:10px}
+.botao{display:inline-flex;align-items:center;min-height:44px;padding:10px 20px;border-radius:50px;background:linear-gradient(to right,#0057b7,#00c2ff);color:white;text-decoration:none;font-weight:700;font-size:14px;transition:.3s}
+.botao:hover,.botao:focus-visible{background:var(--navy);outline:3px solid #74d4f4;outline-offset:2px}
+.botao-claro{background:white;color:var(--blue);border:1px solid #c5ddeb}
+.rodape{margin-top:30px;padding:20px;text-align:center;background:rgba(0,0,0,.85);color:white;font-weight:700}
+.rodape span{display:block;color:#d3e8f8;font-size:13px;font-weight:400}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:650px){.pagina-topo{padding:96px 22px 35px}.pagina-topo p{font-size:15px}.conteudo{width:90%;margin:25px auto 40px}.destaque{grid-template-columns:1fr;padding:23px}.grade{grid-template-columns:1fr}.cartao{padding:23px}.referencia{padding:24px}.voltar{left:14px;top:14px;padding:10px 14px;font-size:14px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.form-interprete{display:grid;gap:9px;margin-top:18px}
+.form-interprete label{margin-top:5px;color:var(--ink);font-size:13px;font-weight:600}
+.form-interprete input{width:100%;min-height:46px;padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);font:inherit;font-size:14px;outline:none}
+.form-interprete input:focus{border-color:#138dd1;box-shadow:0 0 0 3px #00aeea20}
+.form-interprete .campo-senha{position:relative;display:flex;align-items:center}
+.form-interprete .campo-senha input{padding-right:78px}
+.mostrar-senha{position:absolute;right:8px;padding:7px 9px;border:0;border-radius:8px;background:transparent;color:var(--blue);font:600 12px 'Poppins',sans-serif;cursor:pointer}
+.mensagem-interprete{min-height:20px;margin:2px 0 0;color:#a5221a;font-size:13px}
+.mensagem-interprete.sucesso{color:#176338}
+.nota-interprete{margin:18px 0 0;color:var(--muted);font-size:13px}
+.nota-interprete a{color:var(--blue);font-weight:700}
+.lista-interpretes{display:grid;gap:14px;margin-top:18px}
+.lista-vazia{margin:0;color:var(--muted)}
+.perfil-interprete{display:flex;justify-content:space-between;gap:20px;padding:20px;border:1px solid var(--line);border-radius:16px;background:#f8fbfe}
+.perfil-interprete h3{margin:0 0 8px;color:var(--blue)}
+.perfil-interprete p{margin:4px 0;color:var(--muted);font-size:13px}
+.contato-interprete{min-width:170px;text-align:right}
+.contato-interprete .botao{margin-bottom:7px}
+@media(max-width:650px){.perfil-interprete{flex-direction:column}.contato-interprete{text-align:left;min-width:0}}
+.status-pendente{border-left:7px solid #d39b00}.status-aprovado{border-left:7px solid #238b57}.status-reprovado{border-left:7px solid #b52b2b}.status-bloqueado{border-left:7px solid #6b7280}
+.status-pendente .numero{background:#b98200}.status-aprovado .numero{background:#238b57}.status-reprovado .numero{background:#b52b2b}.status-bloqueado .numero{background:#6b7280}
+.form-interprete input:disabled,.form-interprete select:disabled{background:#edf1f5;cursor:not-allowed;opacity:.8}
