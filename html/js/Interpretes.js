@@ -4,29 +4,8 @@
     const ITERATIONS = 210000;
     const encoder = new TextEncoder();
 
-    const read = () => {
-        try {
-            const value = JSON.parse(localStorage.getItem(KEY) || '[]');
-            return Array.isArray(value) ? value : [];
-        } catch { return []; }
-    };
-    const save = value => localStorage.setItem(KEY, JSON.stringify(value));
-    const b64 = bytes => btoa(String.fromCharCode(...new Uint8Array(bytes)));
-
-    async function hash(password, salt, iterations = ITERATIONS) {
-        const key = await crypto.subtle.importKey('raw', encoder.encode(password), 'PBKDF2', false, ['deriveBits']);
-        const bits = await crypto.subtle.deriveBits({name:'PBKDF2', salt, iterations, hash:'SHA-256'}, key, 256);
-        return b64(bits);
-    }
-
-
-    function safeEqual(a, b) {
-        if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
-        let result = 0;
-        for (let i = 0; i < a.length; i++) result |= a.charCodeAt(i) ^ b.charCodeAt(i);
-        return result === 0;
-    }
-
+    const api=async(path,options={})=>{const r=await fetch('../backend/api/'+path,{credentials:'same-origin',...options});let d;try{d=await r.json()}catch{throw Error('Resposta inválida do servidor. Confirme a configuração PHP/MySQL.')}if(!r.ok||!d.ok)throw Error(d.erro||'Erro na comunicação com o servidor');return d;};
+    const mutation=(data)=>({method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
     async function imageFileToDataUrl(file) {
         if (!file) return '';
         if (!file.type || !file.type.startsWith('image/')) throw new Error('Selecione um arquivo de imagem válido.');
@@ -102,88 +81,36 @@
         if (data.senha.length < 8)
             return message('mensagem-interprete', 'A senha precisa ter pelo menos 8 caracteres.');
 
-        const interpretes = read();
-        if (interpretes.some(item => item.email === data.email))
-            return message('mensagem-interprete', 'Já existe um cadastro de intérprete com este e-mail.');
-
         try {
-            data.foto_url = await imageFileToDataUrl(photoFile);
-            const salt = crypto.getRandomValues(new Uint8Array(16));
-            const passwordHash = await hash(data.senha, salt);
-            interpretes.push({
-                nome:data.nome, email:data.email, telefone:data.telefone,
-                cidade:data.cidade, atuacao:data.atuacao,
-                disponibilidade:data.disponibilidade, modalidade:data.modalidade || 'Presencial', certificacao:data.certificacao || '', foto_url:data.foto_url || '',
-                salt:b64(salt), passwordHash, iterations:ITERATIONS,
-                ativo:true,
-                status:'pendente',
-                motivo_status:'',
-                criado_em:new Date().toISOString(),
-                status_atualizado_em:new Date().toISOString()
-            });
-            try { save(interpretes); } catch (storageError) { throw new Error('Não foi possível salvar os dados neste navegador. Tente uma imagem menor ou libere espaço no armazenamento.'); }
-            cadastro.reset();
-            const preview = document.getElementById('interprete-foto-preview'); if (preview) preview.replaceChildren();
-            message('mensagem-interprete', 'Cadastro realizado com sucesso! Redirecionando para o login...', true);
-            setTimeout(() => { window.location.href = 'LoginInterprete.html?cadastro=sucesso'; }, 900);
-        } catch (error) {
-            message('mensagem-interprete', error.message || 'Não foi possível realizar o cadastro.');
-        }
+            data.foto_url=await imageFileToDataUrl(photoFile);
+            await api('interpretes.php',mutation(data));
+            cadastro.reset();const preview=document.getElementById('interprete-foto-preview');if(preview)preview.replaceChildren();
+            message('mensagem-interprete','Cadastro salvo no banco de dados! Redirecionando para o login...',true);
+            setTimeout(()=>{window.location.href='LoginInterprete.html?cadastro=sucesso'},900);
+        }catch(error){message('mensagem-interprete',error.message||'Não foi possível cadastrar.');}
     });
 
-    const login = document.getElementById('form-login-interprete');
-    if (login && localStorage.getItem(SESSION)) { window.location.href = 'PerfilInterprete.html'; return; }
-    if (login) login.addEventListener('submit', async event => {
-        event.preventDefault();
-        const email = document.getElementById('login-interprete-email').value.trim().toLowerCase();
-        const senha = document.getElementById('login-interprete-senha').value;
-        const user = read().find(item => item.email === email);
-        if (!user) return message('mensagem-login-interprete', 'E-mail ou senha incorretos.');
-        try {
-            const salt = Uint8Array.from(atob(user.salt), c => c.charCodeAt(0));
-            const actual = await hash(senha, salt, Number(user.iterations) || ITERATIONS);
-            if (!safeEqual(actual, user.passwordHash)) return message('mensagem-login-interprete', 'E-mail ou senha incorretos.');
-            localStorage.setItem(SESSION, JSON.stringify({email:user.email, nome:user.nome}));
-            const statusText = ({pendente:'Seu cadastro está aguardando análise do administrador.', aprovado:'Seu cadastro foi aprovado.', reprovado:'Seu cadastro foi recusado. Você poderá consultar o motivo no seu perfil.', bloqueado:'Seu acesso está bloqueado pela administração. Consulte o motivo no seu perfil.'})[user.status || 'pendente'];
-            message('mensagem-login-interprete', `Login realizado. ${statusText} Redirecionando...`, true);
-            setTimeout(() => { window.location.href = 'PerfilInterprete.html'; }, 900);
-        } catch {
-            message('mensagem-login-interprete', 'Não foi possível realizar o login.');
-        }
-    });
+    const login=document.getElementById('form-login-interprete');
+    if(login){
+      api('interprete_sessao.php').then(()=>{window.location.href='PerfilInterprete.html'}).catch(()=>{});
+      login.addEventListener('submit',async e=>{
+        e.preventDefault();const email=document.getElementById('login-interprete-email').value.trim(),senha=document.getElementById('login-interprete-senha').value;
+        try{await api('interprete_sessao.php',mutation({email,senha}));message('mensagem-login-interprete','Login realizado. Abrindo seu perfil...',true);window.location.href='PerfilInterprete.html';}
+        catch(err){message('mensagem-login-interprete',err.message)}
+      });
+    }
 
     document.getElementById('abrir-login-interprete')?.addEventListener('click', () => {
         document.getElementById('login-interprete-email')?.focus();
     });
 
-    function render() {
-        const box = document.getElementById('interpretes-cadastrados');
-        if (!box) return;
-        const interpretes = read().filter(item => item.ativo !== false && (!item.status || item.status === 'aprovado'));
-        if (!interpretes.length) {
-            box.innerHTML = '<p class="lista-vazia">Ainda não há intérpretes cadastrados neste navegador.</p>';
-            return;
-        }
-        box.innerHTML = interpretes.map(item => `
-            <article class="perfil-interprete">
-                <div>${item.foto_url ? `<img src="${escapeHtml(item.foto_url)}" alt="Foto de ${escapeHtml(item.nome)}" style="max-width:100px;border-radius:12px;margin-bottom:10px;">` : ''}
-                    <h3>${escapeHtml(item.nome)}</h3>
-                    <p><strong>Atuação:</strong> ${escapeHtml(item.atuacao)}</p>
-                    <p><strong>Região:</strong> ${escapeHtml(item.cidade)}</p>
-                    <p><strong>Disponibilidade:</strong> ${escapeHtml(item.disponibilidade)}</p><p><strong>Modalidade:</strong> ${escapeHtml(item.modalidade || 'Presencial')}</p>${item.certificacao ? `<p><strong>Formação:</strong> ${escapeHtml(item.certificacao)}</p>` : ''}
-                </div>
-                <div class="contato-interprete">
-                    <a class="botao botao-claro" href="https://wa.me/55${item.telefone.replace(/\D/g,'')}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-                    <a class="botao" href="mailto:${encodeURIComponent(item.email)}">E-mail</a>
-                    <p>${escapeHtml(item.telefone)}</p>
-                </div>
-            </article>
-        `).join('');
+    async function render(){
+        const box=document.getElementById('interpretes-cadastrados');if(!box)return;
+        try{const interpretes=(await api('interpretes.php')).interpretes;
+            if(!interpretes.length){box.innerHTML='<p class="lista-vazia">Ainda não há intérpretes aprovados.</p>';return;}
+            box.innerHTML=interpretes.map(item=>`<article class="perfil-interprete"><div>${item.foto_url?`<img src="${escapeHtml(item.foto_url)}" alt="Foto de ${escapeHtml(item.nome)}" style="max-width:100px;border-radius:12px;margin-bottom:10px;">`:''}<h3>${escapeHtml(item.nome)}</h3><p><strong>Atuação:</strong> ${escapeHtml(item.atuacao)}</p><p><strong>Região:</strong> ${escapeHtml(item.cidade)}</p><p><strong>Disponibilidade:</strong> ${escapeHtml(item.disponibilidade)}</p></div><div class="contato-interprete"><a class="botao botao-claro" href="https://wa.me/55${String(item.telefone).replace(/\D/g,'')}" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="botao" href="mailto:${encodeURIComponent(item.email)}">E-mail</a></div></article>`).join('');
+        }catch(err){box.textContent='Erro ao carregar intérpretes: '+err.message;}
     }
-
-    function escapeHtml(value) {
-        return String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[char]));
-    }
-
+    function escapeHtml(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
     render();
 })();

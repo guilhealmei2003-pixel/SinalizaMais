@@ -1,0 +1,6 @@
+backend/admin_auth.php
+backend/config.local.php
+backend/config.php
+backend/uploads/
+.env
+*.log

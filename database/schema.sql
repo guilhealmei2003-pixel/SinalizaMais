@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS interpretes (
   certificacao VARCHAR(255) NULL,
   modalidade ENUM('Presencial','Online','Presencial e online') DEFAULT 'Presencial',
   foto_url VARCHAR(500) NULL,
+  foto_data MEDIUMTEXT NULL,
   ativo TINYINT(1) DEFAULT 1,
   status ENUM('pendente','aprovado','reprovado','bloqueado') DEFAULT 'pendente',
   motivo_status VARCHAR(500) NULL,
@@ -78,3 +79,7 @@ CREATE TABLE IF NOT EXISTS mensagens_contato (
   atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   INDEX idx_mensagens_status_data (status, criado_em)
 );
+
+CREATE TABLE IF NOT EXISTS eventos_admin (
+ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, titulo VARCHAR(180) NOT NULL, tipo VARCHAR(60) NOT NULL, local_evento VARCHAR(255) NOT NULL, data_evento DATE NOT NULL, descricao TEXT NOT NULL, status ENUM('rascunho','revisao','publicado','arquivado') DEFAULT 'publicado', fonte VARCHAR(255), link VARCHAR(500), publicado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP, atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

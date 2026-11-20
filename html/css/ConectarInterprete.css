@@ -61,3 +61,6 @@ body{background:#eaf4ff!important;background-image:radial-gradient(ellipse at 8%
 /* Acesso direto ao site oficial da Central de Libras de Praia Grande – SP */
 .icone-central-direto{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:inherit;cursor:pointer;flex:0 0 auto}
 .icone-central-direto:focus-visible{outline:3px solid #2563eb;outline-offset:4px;border-radius:8px}
+
+/* Contraste do botao da Central de Libras ao passar o mouse e focar. */
+.ajuda-duas-colunas .botao-claro:hover,.ajuda-duas-colunas .botao-claro:focus-visible{background:#244b70!important;color:#fff!important;border-color:#244b70!important;}

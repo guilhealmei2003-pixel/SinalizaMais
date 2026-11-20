@@ -1,0 +1,51 @@
+SINALIZA+ — ATUALIZAÇÃO DE EVENTOS E INTÉRPRETES — 19/11/2026
+
+O QUE FOI CORRIGIDO
+- O botão "Conhecer a Central de Libras de Praia Grande – SP" fica com letras brancas ao passar o mouse ou usar teclado.
+- Eventos criados na administração agora são lidos/salvos no MySQL.
+- Cadastros de intérpretes, senhas (hash), fotos comprimidas, aprovações e alterações de perfil agora são lidos/salvos no MySQL.
+- O navegador anônimo consulta o mesmo banco de dados e mostra eventos publicados e intérpretes aprovados.
+- A área administrativa continua protegida por login PHP e token de segurança.
+- Opção de importação de registros antigos do navegador foi adicionada ao painel administrativo.
+
+PASSO 1 — FAÇA BACKUP
+Salve uma cópia dos arquivos e exporte seu banco atual pelo phpMyAdmin antes de atualizar.
+NÃO apague o seu banco nem os diretórios do site.
+
+PASSO 2 — ATUALIZE O BANCO EXISTENTE
+No painel InfinityFree > MySQL Databases, abra phpMyAdmin e selecione seu banco existente.
+Na aba SQL, execute o arquivo:
+  database/ATUALIZACAO_EVENTOS_INTERPRETES.sql
+Ele cria eventos_admin e acrescenta foto_data na tabela interpretes.
+Atenção: a linha ALTER TABLE só deve ser executada uma vez. Se foto_data já existir, pule essa linha.
+NÃO importe schema.sql no banco existente. Esse arquivo serve como referência para uma instalação nova.
+
+PASSO 3 — ENVIE OS ARQUIVOS
+Extraia o ZIP e envie os arquivos/pastas do projeto para a raiz do site (ex.: /htdocs no InfinityFree).
+Não coloque uma pasta adicional 'SinalizaMais-main' dentro do site: o arquivo admin/painel.php precisa continuar em /admin/painel.php.
+Preserve o arquivo backend/config.local.php já configurado na hospedagem.
+A versão ZIP NÃO inclui esse arquivo com senha do banco. Se ainda não existir, crie o arquivo com base em backend/config.php e seus dados MySQL reais.
+Não publique o arquivo config.local.php no GitHub.
+Se estiver usando um serviço de hospedagem sem PHP/MySQL, essas funções não operarão: precisa de servidor compatível.
+
+PASSO 4 — RECUPERE CADASTROS ANTIGOS (OPCIONAL)
+Abra o painel /admin/painel.php no MESMO navegador/perfil em que os registros antigos foram cadastrados.
+Clique "Importar dados antigos deste navegador".
+A importação copia os eventos e intérpretes anteriores para o banco sem apagar os dados locais.
+O login dos intérpretes importados continua aceitando a senha anterior.
+Se você criou registros em navegadores diferentes, repita a importação em cada navegador (de preferência com backup).
+A guia anônima não compartilha o localStorage do navegador normal, mas, após a importação, verá o banco central.
+
+PASSO 5 — TESTE
+1. No painel admin, crie um evento como "Publicado".
+2. Abra o site em janela anônima e confira html/Eventos.html.
+3. Cadastre um intérprete pela página pública e consulte o novo cadastro no painel admin.
+4. Aprove o cadastro pelo painel.
+5. Confira a lista na janela anônima em html/ConectarInterprete.html.
+6. Teste login, alteração de perfil e botão Desconectar do intérprete.
+
+IMPORTANTE
+- Registros em revisão, rascunho ou arquivados não são mostrados na página pública.
+- Intérpretes pendentes, reprovados ou bloqueados não são mostrados na lista pública.
+- Não foi possível testar conexão real com o banco da hospedagem daqui. Antes de disponibilizar, rode o roteiro de testes acima no seu servidor.
+- Preserve os arquivos config.local.php e dados do banco antes de substituir arquivos.

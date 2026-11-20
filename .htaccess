@@ -10,7 +10,7 @@ DirectoryIndex index.php
   RewriteRule ^html/(Admin|AdminLogin)\.html$ - [F,L,NC]
 
   # API publica e API autenticada: necessario para formularios e login.
-  RewriteRule ^backend/api/(admin_sessao|contato|conteudos|health|interpretes|interpretes_admin|usuarios)\.php$ - [L,NC]
+  RewriteRule ^backend/api/(admin_sessao|contato|conteudos|eventos|importar_local|health|interpretes|interprete_sessao|interpretes_admin|usuarios)\.php$ - [L,NC]
 
   # Protege configuracoes, arquivos PHP internos e documentos privados.
   RewriteRule ^(backend|database|docs)(/|$) - [F,L,NC]

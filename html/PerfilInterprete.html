@@ -36,12 +36,8 @@
 <footer class="rodape">Sinaliza+ <span>Transparência, segurança e acessibilidade.</span></footer>
 <script src="js/Acessibilidade.js"></script><script>
 (() => {
- const KEY='sinaliza_interpretes_v1', SESSION='sinaliza_interprete_sessao_v2';
- let session; try { session=JSON.parse(localStorage.getItem(SESSION)||'null'); } catch { session=null; }
- if(!session){ window.location.replace('LoginInterprete.html'); return; }
- let users=[]; try { users=JSON.parse(localStorage.getItem(KEY)||'[]'); } catch { users=[]; }
- let user=users.find(item=>item.email===session.email);
- if(!user){ localStorage.removeItem(SESSION); window.location.replace('LoginInterprete.html'); return; }
+ let user=null;
+ const api=async(options={})=>{const r=await fetch('../backend/api/interprete_sessao.php',{credentials:'same-origin',...options});let d;try{d=await r.json()}catch{throw Error('Erro na resposta do servidor')}if(!r.ok||!d.ok)throw Error(d.erro||'Erro no servidor');return d;};
  const statusMeta={
    pendente:{label:'Pendente de análise',icone:'!',texto:'Seu cadastro foi recebido e está aguardando a análise do administrador.',classe:'status-pendente'},
    aprovado:{label:'Cadastro aprovado',icone:'✓',texto:'Seu cadastro foi aprovado pelo administrador. Seu perfil profissional pode ser disponibilizado no Sinaliza+.',classe:'status-aprovado'},
@@ -74,9 +70,16 @@
    document.getElementById('edit-telefone').value=user.telefone||''; document.getElementById('edit-cidade').value=user.cidade||''; document.getElementById('edit-atuacao').value=user.atuacao||''; document.getElementById('edit-disponibilidade').value=user.disponibilidade||''; document.getElementById('edit-modalidade').value=user.modalidade||'Presencial'; document.getElementById('edit-certificacao').value=user.certificacao||'';
    document.getElementById('edicao-section').style.display=status==='bloqueado'?'none':'';
  };
- document.getElementById('form-editar-interprete').addEventListener('submit',async e=>{e.preventDefault(); const status=user.status||'pendente'; const msg=document.getElementById('mensagem-edicao'); try { user.telefone=document.getElementById('edit-telefone').value.trim(); user.cidade=document.getElementById('edit-cidade').value.trim(); user.atuacao=document.getElementById('edit-atuacao').value.trim(); user.disponibilidade=document.getElementById('edit-disponibilidade').value.trim(); user.modalidade=document.getElementById('edit-modalidade').value; user.certificacao=document.getElementById('edit-certificacao').value.trim(); if(!user.telefone||!user.cidade||!user.atuacao||!user.disponibilidade){msg.textContent='Preencha os campos obrigatórios.';msg.className='mensagem-interprete erro';return;} if(editPhoto.files&&editPhoto.files[0]) user.foto_url=await imageFileToDataUrl(editPhoto.files[0]); if(status==='reprovado'){user.status='pendente';user.ativo=false;user.motivo_status='Dados atualizados pelo intérprete. Aguardando nova análise administrativa.';user.status_atualizado_em=new Date().toISOString();} users=users.map(item=>item.email===user.email?user:item); try { localStorage.setItem(KEY,JSON.stringify(users)); } catch(storageError) { throw new Error('Não foi possível salvar os dados neste navegador. Tente uma imagem menor ou libere espaço no armazenamento.'); } editPhoto.value='';document.getElementById('edit-foto-preview').replaceChildren();msg.textContent=status==='reprovado'?'Dados atualizados. Seu cadastro voltou para análise do administrador.':'Perfil atualizado com sucesso.';msg.className='mensagem-interprete sucesso';render(); } catch(error) { msg.textContent=error.message||'Não foi possível salvar as alterações.';msg.className='mensagem-interprete erro';} });
- document.getElementById('sair-interprete').addEventListener('click',()=>{localStorage.removeItem(SESSION); window.location.href='Interpretes.html';});
- render();
+ document.getElementById('form-editar-interprete').addEventListener('submit',async e=>{
+   e.preventDefault();const msg=document.getElementById('mensagem-edicao');
+   try{const d={};for(const field of ['telefone','cidade','atuacao','disponibilidade','modalidade','certificacao'])d[field]=document.getElementById('edit-'+field).value.trim();
+     if(editPhoto.files?.[0])d.foto_url=await imageFileToDataUrl(editPhoto.files[0]);
+     const response=await api({method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});user=response.interprete;editPhoto.value='';document.getElementById('edit-foto-preview').replaceChildren();render();msg.textContent='Perfil atualizado no banco de dados.';msg.className='mensagem-interprete sucesso';
+   }catch(err){msg.textContent=err.message;msg.className='mensagem-interprete erro';}
+ });
+ document.getElementById('sair-interprete').addEventListener('click',async()=>{try{await api({method:'DELETE'})}finally{window.location.href='Interpretes.html'}});
+ api().then(d=>{user=d.interprete;render()}).catch(()=>{window.location.replace('LoginInterprete.html')});
+
 })();
 </script>
 

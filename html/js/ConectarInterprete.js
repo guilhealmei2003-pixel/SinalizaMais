@@ -1,6 +1,6 @@
 (() => {
-  const KEY='sinaliza_interpretes_v1';
-  const read=()=>{try{const v=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(v)?v:[]}catch{return[]}};
+  let interpretes=[];
+  const read=()=>interpretes;
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
   const normal=v=>String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
   const busca=document.getElementById('busca'), localidade=document.getElementById('localidade'), modalidade=document.getElementById('modalidade');
@@ -22,5 +22,5 @@
     }).join('');
   }
   [busca,localidade,modalidade].forEach(el=>el.addEventListener('input',render));
-  render();
+  fetch('../backend/api/interpretes.php').then(async r=>{const d=await r.json();if(!r.ok||!d.ok)throw Error(d.erro||'Falha no servidor');interpretes=d.interpretes;render()}).catch(e=>{resultado.textContent='Não foi possível carregar os intérpretes: '+e.message;});
 })();
